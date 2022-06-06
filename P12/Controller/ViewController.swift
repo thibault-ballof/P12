@@ -8,12 +8,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    let service = Service()
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        
+        service.fetchMatch(typeOfMatch: "running") { data in
+            print(data?.count)
+        }
+       
+        service.fetchMatch(typeOfMatch: "upcoming") { data in
+            print(data?.count)
+        }
+        
+        
     }
-
-
+    
 }
-
