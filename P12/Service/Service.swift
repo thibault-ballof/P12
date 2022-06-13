@@ -18,7 +18,6 @@ class Service {
             .validate()
             .responseDecodable(of: [DataJSON].self) { (response) in
                 guard let matchs = response.value else { return }
-                print(matchs.count)
                 completionHandler(matchs)
             }
         

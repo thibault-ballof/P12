@@ -7,9 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6365FE8B28577DFB005C363A /* GamesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6365FE8A28577DFB005C363A /* GamesCollectionViewCell.swift */; };
+		6365FE8E2857889C005C363A /* LeaguesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6365FE8C2857889C005C363A /* LeaguesCollectionViewCell.swift */; };
+		6365FE8F2857889C005C363A /* LeaguesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6365FE8D2857889C005C363A /* LeaguesCollectionViewCell.xib */; };
+		6365FE91285797D1005C363A /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6365FE90285797D1005C363A /* RankingData.swift */; };
+		6365FE9328579861005C363A /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6365FE9228579861005C363A /* Ranking.swift */; };
+		6365FE9528579A5E005C363A /* GamesLeaguesData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6365FE9428579A5E005C363A /* GamesLeaguesData.swift */; };
 		63C31E75284DFD650083AD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31E74284DFD650083AD8B /* AppDelegate.swift */; };
 		63C31E77284DFD650083AD8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31E76284DFD650083AD8B /* SceneDelegate.swift */; };
-		63C31E79284DFD650083AD8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31E78284DFD650083AD8B /* ViewController.swift */; };
 		63C31E7C284DFD650083AD8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63C31E7A284DFD650083AD8B /* Main.storyboard */; };
 		63C31E7F284DFD650083AD8B /* P12.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 63C31E7D284DFD650083AD8B /* P12.xcdatamodeld */; };
 		63C31E81284DFD660083AD8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63C31E80284DFD660083AD8B /* Assets.xcassets */; };
@@ -22,6 +27,11 @@
 		63C31EB2284DFE7E0083AD8B /* SessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31EB1284DFE7E0083AD8B /* SessionProtocol.swift */; };
 		63C31EB4284DFE910083AD8B /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31EB3284DFE910083AD8B /* Session.swift */; };
 		63C31EB6284DFEB90083AD8B /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31EB5284DFEB90083AD8B /* Data.swift */; };
+		63C31EBB284E11860083AD8B /* FirstLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31EB9284E11860083AD8B /* FirstLaunchViewController.swift */; };
+		63C31EBC284E11860083AD8B /* FirstLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C31EBA284E11860083AD8B /* FirstLaunchViewController.xib */; };
+		63C31EBE284E22380083AD8B /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31EBD284E22380083AD8B /* TestViewController.swift */; };
+		63C31EC0284E51CC0083AD8B /* RankingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31EBF284E51CC0083AD8B /* RankingViewController.swift */; };
+		63C31EC2284E51F00083AD8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31EC1284E51F00083AD8B /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +52,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6365FE8A28577DFB005C363A /* GamesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesCollectionViewCell.swift; sourceTree = "<group>"; };
+		6365FE8C2857889C005C363A /* LeaguesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesCollectionViewCell.swift; sourceTree = "<group>"; };
+		6365FE8D2857889C005C363A /* LeaguesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeaguesCollectionViewCell.xib; sourceTree = "<group>"; };
+		6365FE90285797D1005C363A /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
+		6365FE9228579861005C363A /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
+		6365FE9428579A5E005C363A /* GamesLeaguesData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesLeaguesData.swift; sourceTree = "<group>"; };
 		63C31E71284DFD650083AD8B /* P12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C31E74284DFD650083AD8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63C31E76284DFD650083AD8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63C31E78284DFD650083AD8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63C31E7B284DFD650083AD8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63C31E7E284DFD650083AD8B /* P12.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = P12.xcdatamodel; sourceTree = "<group>"; };
 		63C31E80284DFD660083AD8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,6 +75,11 @@
 		63C31EB1284DFE7E0083AD8B /* SessionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionProtocol.swift; sourceTree = "<group>"; };
 		63C31EB3284DFE910083AD8B /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		63C31EB5284DFEB90083AD8B /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		63C31EB9284E11860083AD8B /* FirstLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchViewController.swift; sourceTree = "<group>"; };
+		63C31EBA284E11860083AD8B /* FirstLaunchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstLaunchViewController.xib; sourceTree = "<group>"; };
+		63C31EBD284E22380083AD8B /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		63C31EBF284E51CC0083AD8B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
+		63C31EC1284E51F00083AD8B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				63C31EB5284DFEB90083AD8B /* Data.swift */,
+				6365FE90285797D1005C363A /* RankingData.swift */,
+				6365FE9428579A5E005C363A /* GamesLeaguesData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -155,6 +177,7 @@
 				63C31EAF284DFDC10083AD8B /* Service.swift */,
 				63C31EB1284DFE7E0083AD8B /* SessionProtocol.swift */,
 				63C31EB3284DFE910083AD8B /* Session.swift */,
+				6365FE9228579861005C363A /* Ranking.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -162,8 +185,12 @@
 		63C31EA9284DFD7D0083AD8B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				63C31EBA284E11860083AD8B /* FirstLaunchViewController.xib */,
 				63C31E82284DFD660083AD8B /* LaunchScreen.storyboard */,
 				63C31E7A284DFD650083AD8B /* Main.storyboard */,
+				6365FE8A28577DFB005C363A /* GamesCollectionViewCell.swift */,
+				6365FE8C2857889C005C363A /* LeaguesCollectionViewCell.swift */,
+				6365FE8D2857889C005C363A /* LeaguesCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -171,7 +198,10 @@
 		63C31EAA284DFD960083AD8B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				63C31E78284DFD650083AD8B /* ViewController.swift */,
+				63C31EC1284E51F00083AD8B /* ResultViewController.swift */,
+				63C31EBF284E51CC0083AD8B /* RankingViewController.swift */,
+				63C31EB9284E11860083AD8B /* FirstLaunchViewController.swift */,
+				63C31EBD284E22380083AD8B /* TestViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -286,8 +316,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C31EBC284E11860083AD8B /* FirstLaunchViewController.xib in Resources */,
 				63C31E84284DFD660083AD8B /* LaunchScreen.storyboard in Resources */,
 				63C31E81284DFD660083AD8B /* Assets.xcassets in Resources */,
+				6365FE8F2857889C005C363A /* LeaguesCollectionViewCell.xib in Resources */,
 				63C31E7C284DFD650083AD8B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,14 +345,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63C31EBE284E22380083AD8B /* TestViewController.swift in Sources */,
+				6365FE8E2857889C005C363A /* LeaguesCollectionViewCell.swift in Sources */,
+				6365FE91285797D1005C363A /* RankingData.swift in Sources */,
 				63C31EB4284DFE910083AD8B /* Session.swift in Sources */,
-				63C31E79284DFD650083AD8B /* ViewController.swift in Sources */,
+				6365FE9328579861005C363A /* Ranking.swift in Sources */,
 				63C31E75284DFD650083AD8B /* AppDelegate.swift in Sources */,
 				63C31EB2284DFE7E0083AD8B /* SessionProtocol.swift in Sources */,
+				6365FE8B28577DFB005C363A /* GamesCollectionViewCell.swift in Sources */,
+				63C31EBB284E11860083AD8B /* FirstLaunchViewController.swift in Sources */,
 				63C31EB0284DFDC10083AD8B /* Service.swift in Sources */,
 				63C31E77284DFD650083AD8B /* SceneDelegate.swift in Sources */,
 				63C31E7F284DFD650083AD8B /* P12.xcdatamodeld in Sources */,
 				63C31EB6284DFEB90083AD8B /* Data.swift in Sources */,
+				63C31EC0284E51CC0083AD8B /* RankingViewController.swift in Sources */,
+				6365FE9528579A5E005C363A /* GamesLeaguesData.swift in Sources */,
+				63C31EC2284E51F00083AD8B /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
