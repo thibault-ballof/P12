@@ -9,8 +9,8 @@ import Foundation
 import Alamofire
 
 final class Session: SessionProtocol {
-    func request(url: URL, callback: @escaping (AFDataResponse<DataJSON>) -> Void) {
-        AF.request(url).responseDecodable(of: DataJSON.self) { dataResponse in
+    func request(url: URL, callback: @escaping (AFDataResponse<DataJson>) -> Void) {
+        AF.request(url).responseDecodable(of: DataJson.self) { dataResponse in
             callback(dataResponse)
         }
     }

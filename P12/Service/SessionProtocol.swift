@@ -9,5 +9,5 @@ import Foundation
 import Alamofire
 
 protocol SessionProtocol {
-    func request(url: URL, callback: @escaping (AFDataResponse<DataJSON>) -> Void)
+    func request(url: URL, callback: @escaping (AFDataResponse<DataJson>) -> Void)
 }

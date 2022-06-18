@@ -12,8 +12,6 @@ class Ranking {
     
     
     
-    func createRanking(slug: String, league: LolLeagues) {
-        
-    }
+  
     
 }

@@ -10,7 +10,7 @@ import UIKit
 class GamesCollectionViewCell: UICollectionViewCell {
     
     
-    var cornerRadius: CGFloat = 5.0
+    private var cornerRadius: CGFloat = 5.0
     
     @IBOutlet weak var gameImage: UIImageView!
     @IBOutlet weak var Label: UILabel!
@@ -45,3 +45,4 @@ class GamesCollectionViewCell: UICollectionViewCell {
             ).cgPath
 }
 }
+

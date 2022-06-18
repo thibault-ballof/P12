@@ -46,7 +46,7 @@
                     <rect key="frame" x="43" y="394" width="147" height="136"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="CS"/>
+                    <buttonConfiguration key="configuration" style="plain" image="CSGO"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U67-KN-qlP">
                     <rect key="frame" x="206" y="394" width="147" height="136"/>
@@ -55,10 +55,10 @@
                     <buttonConfiguration key="configuration" style="plain" image="Fifa"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oj-74-uMk">
-                    <rect key="frame" x="216" y="537" width="147" height="136"/>
+                    <rect key="frame" x="217" y="537" width="147" height="136"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" image="Overwatch"/>
+                    <buttonConfiguration key="configuration" style="plain" image="OW"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JrL-tz-w4q">
                     <rect key="frame" x="38" y="523" width="174" height="164"/>
@@ -73,10 +73,10 @@
         </view>
     </objects>
     <resources>
-        <image name="CS" width="123" height="122"/>
+        <image name="CSGO" width="123" height="122"/>
         <image name="Dota" width="121" height="122"/>
         <image name="Fifa" width="123" height="122"/>
-        <image name="Overwatch" width="123" height="122"/>
+        <image name="OW" width="123" height="122"/>
         <image name="R6" width="122" height="122"/>
         <image name="RL" width="150" height="150"/>
         <image name="cod" width="150" height="150"/>
