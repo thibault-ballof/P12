@@ -13,4 +13,7 @@ struct RankingData: Codable {
 }
 
 
-
+struct DBRankingData {
+    let name: String
+    let url : String
+}

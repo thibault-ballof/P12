@@ -21,6 +21,7 @@ class Service {
             .validate()
             .responseDecodable(of: [DataJson].self) { (response) in
                 guard let matchs = response.value else { return }
+                
                 completionHandler(matchs)
             }
         
@@ -36,8 +37,8 @@ class Service {
                 completionHandler(matchs)
             }
     }
-    func fetchRanking(completionHandler: @escaping ([RankingData]?) -> Void) {
-        let url = URL(string:  "https://api.pandascore.co/tournaments/league-of-legends-lfl-summer-2022-regular-season/standings?page=1&per_page=50&token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")!
+    func fetchRanking(url: String, completionHandler: @escaping ([RankingData]?) -> Void) {
+        let url = URL(string:  url)!
         print(url)
         AF.request(url)
             .validate()
@@ -60,4 +61,14 @@ class Service {
         }
     }
     
+    
+    /*func createResultMatchObject(data: DataJson) -> MatchObject {
+        if let name = data.name.first {
+            
+        }
+        
+        //return WeatherObject(temperature: temp, cityName: city, weatherDescription: description, iconIdentifier: icon)
+        return MatchObject(name: name, league: String, team: [TeamResult])
+    }*/
+
 }

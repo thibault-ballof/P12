@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class RankingViewController: UIViewController  {
     
@@ -25,6 +26,8 @@ class RankingViewController: UIViewController  {
     private var leagues: [String] = []
     private var rankingCount = 0
     private var rankingData = [RankingData]()
+    private let db = Firestore.firestore()
+    private var documentData: [[String : Any]] = [[:]]
     
     
     
@@ -43,10 +46,14 @@ class RankingViewController: UIViewController  {
         gameCollectionView.showsHorizontalScrollIndicator = false
         leaguesCollectionView.showsHorizontalScrollIndicator = false
         
+        leagues = ["LFL", "LEC", "LCS"]
+        db.collection("leagues")
+        
+        
     }
     
     func getRanking() {
-        Service.shared.fetchRanking { ranking in
+        Service.shared.fetchRanking(url: "") { ranking in
             self.rankingData = ranking!
             self.tableView.reloadData()
             
@@ -64,8 +71,10 @@ extension RankingViewController: UICollectionViewDataSource {
             let gameCell =  gameCollectionView.dequeueReusableCell(withReuseIdentifier: gamesCellIdentifier, for: indexPath) as! GamesCollectionViewCell
             gameCell.Label.text = games[indexPath.row]
             gameCell.gameImage.image = UIImage(named: "\(games[indexPath.row])")
+            
             return gameCell
         } else {
+            
             let leagueCell = leaguesCollectionView.dequeueReusableCell(withReuseIdentifier: leaguesCellIdentifier, for: indexPath) as! LeaguesCollectionViewCell
             Service.shared.fetchLeagues(game: games[indexPath.row]) { leagues in
                 leagueCell.label.text = "\(leagues![indexPath.row].league.name)"
@@ -85,7 +94,7 @@ extension RankingViewController: UICollectionViewDataSource {
         if collectionView == self.gameCollectionView {
             return games.count
         }
-        return 5
+        return documentData.count
         
     }
     
@@ -93,9 +102,32 @@ extension RankingViewController: UICollectionViewDataSource {
 }
 extension RankingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        gameCollectionView.deselectItem(at: indexPath as IndexPath, animated: true)
+       // gameCollectionView.deselectItem(at: indexPath as IndexPath, animated: true)
+        gameCollectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)
         selectedGame = games[indexPath.row]
+    
+        db.collection(selectedGame).getDocuments { [self] snapchot, error in
+            if error == nil {
+                for document in snapchot!.documents {
+                    self.documentData = [document.data()]
+                    self.leaguesCollectionView.reloadData()
+                    print(self.documentData)
+                }
+            }
+            
+        }
         
+       
+        
+       /* db.collection("leagues").getDocuments { snapchot, error in
+            if error == nil {
+                for document in snapchot!.documents {
+                    self.documentData = document.data()
+                    
+                    print(self.documentData.count)
+                }
+            }
+        } */
         leaguesCollectionView.reloadData()
     }
 }
