@@ -21,6 +21,7 @@ class RankingViewController: UIViewController  {
     private let leaguesCellIdentifier = "LeaguesCell"
     private let rankingCellIdentifier = "RankingCell"
     private var selectedGame = "lol"
+    private var selectedLeague = "LFL"
     private let games = ["lol", "CSGO", "OW", "R6", "Valorant"]
     private var slug = ""
     private var leagues: [String] = []
@@ -28,9 +29,7 @@ class RankingViewController: UIViewController  {
     private var rankingData = [RankingData]()
     private let db = Firestore.firestore()
     private var documentData: [[String : Any]] = [[:]]
-    
-    
-    
+    private var dataFromDB: URLFromDB?
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -40,27 +39,39 @@ class RankingViewController: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getRanking()
+        //getRanking()
         leaguesCollectionView.register(UINib.init(nibName: "LeaguesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: leaguesCellIdentifier)
         tableView.register(UINib.init(nibName: "RankingTableViewCell", bundle: nil), forCellReuseIdentifier: rankingCellIdentifier)
         gameCollectionView.showsHorizontalScrollIndicator = false
         leaguesCollectionView.showsHorizontalScrollIndicator = false
-        
-        leagues = ["LFL", "LEC", "LCS"]
-        db.collection("leagues")
+        getLeagueName()
+        getLeagueURL()
+        //leagues = ["LFL", "LEC", "LCS"]
+        //db.collection("leagues")
         
         
     }
-    
-    func getRanking() {
-        Service.shared.fetchRanking(url: "") { ranking in
+    func getLeagueName() {
+        Service.shared.fetchLeaguesFromDB(collection: selectedGame) { data in
+            self.leagues = data
+            self.leaguesCollectionView.reloadData()
+        }
+    }
+    func getRanking(url: String) {
+        Service.shared.fetchRanking(url: url) { ranking in
             self.rankingData = ranking!
+            self.leaguesCollectionView.reloadData()
             self.tableView.reloadData()
             
         }
     }
     
-    
+    func getLeagueURL() {
+        Service.shared.fetchURLFromDB(collection: selectedGame, document: selectedLeague) { data in
+            self.dataFromDB = data
+            self.getRanking(url: self.dataFromDB!.url)
+        }
+    }
 }
 extension RankingViewController: UICollectionViewDataSource {
     
@@ -76,11 +87,12 @@ extension RankingViewController: UICollectionViewDataSource {
         } else {
             
             let leagueCell = leaguesCollectionView.dequeueReusableCell(withReuseIdentifier: leaguesCellIdentifier, for: indexPath) as! LeaguesCollectionViewCell
-            Service.shared.fetchLeagues(game: games[indexPath.row]) { leagues in
-                leagueCell.label.text = "\(leagues![indexPath.row].league.name)"
-            }
-            
-            leagueCell.leagueImage.image = UIImage(named: "\(games[indexPath.row])")
+            leagueCell.label.text = leagues[indexPath.row]
+            /*Service.shared.fetchLeagues(game: games[indexPath.row]) { leagues in
+                leagueCell.label.text = self.dataFromDB?.name
+            }*/
+            Service.shared.fetchImage(url: dataFromDB!.imgurl, image: leagueCell.leagueImage)
+
             
             return leagueCell
             
@@ -94,7 +106,7 @@ extension RankingViewController: UICollectionViewDataSource {
         if collectionView == self.gameCollectionView {
             return games.count
         }
-        return documentData.count
+        return leagues.count
         
     }
     
@@ -103,20 +115,18 @@ extension RankingViewController: UICollectionViewDataSource {
 extension RankingViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        // gameCollectionView.deselectItem(at: indexPath as IndexPath, animated: true)
-        gameCollectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)
-        selectedGame = games[indexPath.row]
-    
-        db.collection(selectedGame).getDocuments { [self] snapchot, error in
-            if error == nil {
-                for document in snapchot!.documents {
-                    self.documentData = [document.data()]
-                    self.leaguesCollectionView.reloadData()
-                    print(self.documentData)
-                }
-            }
-            
+        if collectionView == self.gameCollectionView {
+            gameCollectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)
+            selectedGame = games[indexPath.row]
+            getLeagueName()
+
+        } else {
+            leaguesCollectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)
+            selectedLeague = leagues[indexPath.row]
+            getLeagueURL()
         }
-        
+
+
        
         
        /* db.collection("leagues").getDocuments { snapchot, error in

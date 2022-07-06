@@ -292,6 +292,11 @@ class JSONNull: Codable, Hashable {
     }
 }
 
+struct URLFromDB: Codable {
+    let name: String
+    let url: String
+    let imgurl: String
+}
 
 /*struct DataJSON: Codable {
     let winnerIdentitifier: Int?

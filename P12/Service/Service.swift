@@ -8,11 +8,14 @@
 import Foundation
 import Alamofire
 import UIKit
+import Firebase
 
 class Service {
     
     static let shared = Service()
-
+    private let db = Firestore.firestore()
+    var dataFromDB: URLFromDB?
+    private var leagues: [String] = []
     
     func fetchMatch(typeOfMatch: String, completionHandler: @escaping ([DataJson]?) -> Void){
         let url = URL(string:  "https://api.pandascore.co/matches/" + "\(typeOfMatch)" + "?sort=&page=1&per_page=50&token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")!
@@ -38,6 +41,7 @@ class Service {
             }
     }
     func fetchRanking(url: String, completionHandler: @escaping ([RankingData]?) -> Void) {
+        
         let url = URL(string:  url)!
         print(url)
         AF.request(url)
@@ -61,14 +65,45 @@ class Service {
         }
     }
     
-    
-    /*func createResultMatchObject(data: DataJson) -> MatchObject {
-        if let name = data.name.first {
-            
+    func fetchURLFromDB(collection: String, document: String, completionHandler: @escaping (URLFromDB) -> Void) {
+      let docRef = db.collection(collection).document(document)
+
+      docRef.getDocument { document, error in
+          if let document = document {
+            let data = document.data()
+            let name = data?["name"] as? String ?? ""
+            let url = data?["url"] as? String ?? ""
+            let imgURL = data?["imgurl"] as? String ?? ""
+              self.dataFromDB = URLFromDB(name: name, url: url, imgurl: imgURL)
+              completionHandler(self.dataFromDB!)
+              
+          }
         }
-        
-        //return WeatherObject(temperature: temp, cityName: city, weatherDescription: description, iconIdentifier: icon)
-        return MatchObject(name: name, league: String, team: [TeamResult])
-    }*/
+      }
+
+    func fetchLeaguesFromDB(collection: String, completionHandler: @escaping ([String]) -> Void) {
+        db.collection(collection).getDocuments { (querySnapshot, err) in
+            if let err = err {
+                print("Error: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    if let name = document.data()["name"] as? String {
+
+                            if self.leagues.contains(name) {
+                                print("alreay append")
+                            } else {
+                                self.leagues.append(name)
+                                print(self.leagues)
+                                completionHandler(self.leagues)
+                            }
+
+
+                    }
+                }
+            }
+        }
+
+
+      }
 
 }
