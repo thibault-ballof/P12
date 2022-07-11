@@ -232,7 +232,7 @@ enum WinnerType: String, Codable {
 
 // MARK: - Team
 struct Team: Codable {
-    let acronym: String
+    let acronym: String?
     let id: Int
     let imageURL: String
     let location: String?

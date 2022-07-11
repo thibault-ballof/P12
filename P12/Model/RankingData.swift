@@ -7,9 +7,11 @@
 
 import Foundation
 struct RankingData: Codable {
-    let losses, rank: Int
+    let losses: Int?
+    let rank: Int
     let team: Team
-    let total, wins: Int
+    let total: Int?
+    let wins: Int?
 }
 
 

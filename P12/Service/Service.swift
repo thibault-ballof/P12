@@ -67,7 +67,7 @@ class Service {
     
     func fetchURLFromDB(collection: String, document: String, completionHandler: @escaping (URLFromDB) -> Void) {
       let docRef = db.collection(collection).document(document)
-
+        print("BDD : \(docRef)")
       docRef.getDocument { document, error in
           if let document = document {
             let data = document.data()
@@ -86,9 +86,9 @@ class Service {
             if let err = err {
                 print("Error: \(err)")
             } else {
+                self.leagues = []
                 for document in querySnapshot!.documents {
                     if let name = document.data()["name"] as? String {
-
                             if self.leagues.contains(name) {
                                 print("alreay append")
                             } else {
@@ -96,14 +96,10 @@ class Service {
                                 print(self.leagues)
                                 completionHandler(self.leagues)
                             }
-
-
                     }
                 }
             }
         }
-
-
       }
 
 }
