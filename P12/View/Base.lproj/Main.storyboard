@@ -14,11 +14,11 @@
             <objects>
                 <viewController storyboardIdentifier="RankingViewController" id="uMf-pw-gOH" customClass="RankingViewController" customModule="P12" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gP6-ah-UHj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="huE-d9-hJO">
-                                <rect key="frame" x="0.0" y="44" width="414" height="28"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="28"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="ZHc-EL-XtQ"/>
@@ -74,7 +74,7 @@
                                 </connections>
                             </collectionView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="szA-7n-Ud6">
-                                <rect key="frame" x="0.0" y="80" width="414" height="36"/>
+                                <rect key="frame" x="0.0" y="36" width="414" height="36"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="czP-sv-vFA"/>
@@ -103,7 +103,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="esk-Gn-ld4">
-                                <rect key="frame" x="0.0" y="218" width="414" height="595"/>
+                                <rect key="frame" x="0.0" y="193" width="414" height="620"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -121,6 +121,13 @@
                                     <outlet property="delegate" destination="uMf-pw-gOH" id="pa3-0i-WSD"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JhS-NT-Cf7">
+                                <rect key="frame" x="0.0" y="96" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="h72-sa-NCP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -148,17 +155,27 @@
             <objects>
                 <viewController storyboardIdentifier="ResultViewController" id="ukO-2H-jeB" customClass="ResultViewController" customModule="P12" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3nG-zL-u8T">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-17-ss5">
+                                <rect key="frame" x="0.0" y="98" width="414" height="715"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="StN-3S-zWD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendrier" id="42e-b1-4Tm"/>
                     <navigationItem key="navigationItem" id="Fqy-Ae-yf8"/>
+                    <connections>
+                        <outlet property="tableView" destination="k5O-17-ss5" id="dU6-aA-lT8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqY-DW-IYm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="-811"/>
+            <point key="canvasLocation" x="718.84057971014499" y="-811.60714285714278"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="mtj-Sr-dRK">
@@ -205,44 +222,28 @@
                                     <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="4MP-OQ-SnQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeP-oO-do4">
-                                <rect key="frame" x="202" y="223" width="174" height="164"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="cod" title=""/>
-                                <connections>
-                                    <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="6Nq-NH-FbN"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DD7-CI-jFi">
-                                <rect key="frame" x="45" y="73" width="146" height="150"/>
+                                <rect key="frame" x="19" y="73" width="200" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="tinted" image="R6" imagePlacement="top">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Rainbow Six.">
-                                            <attributes>
-                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="12" name="Helvetica"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacingBefore="4" lineHeightMultiple="1" tighteningFactorForTruncation="0.0" headerLevel="5"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <buttonConfiguration key="configuration" style="plain" image="CSGO" imagePlacement="top" title="Counter Strike: Global Offensive.">
+                                    <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="12"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="qlf-6Q-XGi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9B-Wp-0fi">
-                                <rect key="frame" x="217" y="74" width="145" height="150"/>
+                                <rect key="frame" x="216" y="74" width="147" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Dota" imagePlacement="top">
+                                <buttonConfiguration key="configuration" style="plain" image="OW" imagePlacement="top">
                                     <attributedString key="attributedTitle">
-                                        <fragment content="Dota">
+                                        <fragment content="Overwatch">
                                             <attributes>
                                                 <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <font key="NSFont" size="12" name="Helvetica"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -251,53 +252,8 @@
                                     <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="Lx8-bB-pYV"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="af0-yD-kVB">
-                                <rect key="frame" x="44" y="394" width="147" height="136"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="CS"/>
-                                <connections>
-                                    <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="xXY-6c-ynk"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xc-V0-Gbm">
-                                <rect key="frame" x="207" y="394" width="147" height="136"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Fifa"/>
-                                <connections>
-                                    <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="It7-DM-u3W"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53P-gm-cOR">
-                                <rect key="frame" x="39" y="523" width="174" height="164"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="RL"/>
-                                <connections>
-                                    <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="AoN-sZ-toJ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqa-No-Y5n">
-                                <rect key="frame" x="217" y="537" width="147" height="136"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="Overwatch"/>
-                                <connections>
-                                    <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="O57-DP-bEc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohy-I4-oVd">
-                                <rect key="frame" x="174" y="770" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="button:" destination="orO-SH-vTE" eventType="touchUpInside" id="xXR-Ku-bYc"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quelles compétitions suivez-vous ? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iha-CH-Qid">
-                                <rect key="frame" x="23" y="44" width="370" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quel jeu suivez-vous ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iha-CH-Qid">
+                                <rect key="frame" x="23" y="44" width="353" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
@@ -309,29 +265,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="ZHl-sB-Hvh"/>
                     <connections>
-                        <outletCollection property="gamebuttons" destination="Hqa-No-Y5n" collectionClass="NSMutableArray" id="gwS-NA-bV3"/>
-                        <outletCollection property="gamebuttons" destination="53P-gm-cOR" collectionClass="NSMutableArray" id="l8w-r4-KRn"/>
-                        <outletCollection property="gamebuttons" destination="4Xc-V0-Gbm" collectionClass="NSMutableArray" id="wyR-iv-mEN"/>
-                        <outletCollection property="gamebuttons" destination="af0-yD-kVB" collectionClass="NSMutableArray" id="jBT-YE-cMc"/>
-                        <outletCollection property="gamebuttons" destination="OeP-oO-do4" collectionClass="NSMutableArray" id="rOq-70-WXh"/>
                         <outletCollection property="gamebuttons" destination="0Fh-kv-oEL" collectionClass="NSMutableArray" id="yMe-Hl-8E4"/>
                         <outletCollection property="gamebuttons" destination="DD7-CI-jFi" collectionClass="NSMutableArray" id="MPg-wN-hab"/>
                         <outletCollection property="gamebuttons" destination="b9B-Wp-0fi" collectionClass="NSMutableArray" id="UfH-Em-qaP"/>
+                        <segue destination="ypg-me-l09" kind="show" identifier="segueIdentifier" id="tfB-tw-Xa1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTi-4o-V28" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1490" y="88"/>
+            <point key="canvasLocation" x="-1297.1014492753625" y="-508.25892857142856"/>
         </scene>
     </scenes>
     <resources>
         <image name="CS" width="123" height="122"/>
-        <image name="Dota" width="121" height="122"/>
-        <image name="Fifa" width="123" height="122"/>
-        <image name="Overwatch" width="123" height="122"/>
-        <image name="R6" width="122" height="122"/>
-        <image name="RL" width="150" height="150"/>
-        <image name="cod" width="150" height="150"/>
+        <image name="CSGO" width="123" height="122"/>
+        <image name="OW" width="123" height="122"/>
         <image name="lol" width="150" height="150"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -9,6 +9,7 @@ import UIKit
 
 class RankingTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var leagueImg: UIImageView!
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var teamLabel: UILabel!

@@ -15,6 +15,8 @@
 		63680C962858933A009E99D2 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63680C942858933A009E99D2 /* RankingTableViewCell.swift */; };
 		63680C972858933A009E99D2 /* RankingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63680C952858933A009E99D2 /* RankingTableViewCell.xib */; };
 		63680C9928589518009E99D2 /* RankingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63680C9828589518009E99D2 /* RankingData.swift */; };
+		6380E0F2287C593D003396F4 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6380E0F0287C593D003396F4 /* ResultTableViewCell.swift */; };
+		6380E0F3287C593D003396F4 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6380E0F1287C593D003396F4 /* ResultTableViewCell.xib */; };
 		6382FBB92869A69C00D44C82 /* MatchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6382FBB82869A69C00D44C82 /* MatchObject.swift */; };
 		63C31E75284DFD650083AD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31E74284DFD650083AD8B /* AppDelegate.swift */; };
 		63C31E77284DFD650083AD8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C31E76284DFD650083AD8B /* SceneDelegate.swift */; };
@@ -93,6 +95,8 @@
 		63680C942858933A009E99D2 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		63680C952858933A009E99D2 /* RankingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RankingTableViewCell.xib; sourceTree = "<group>"; };
 		63680C9828589518009E99D2 /* RankingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingData.swift; sourceTree = "<group>"; };
+		6380E0F0287C593D003396F4 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
+		6380E0F1287C593D003396F4 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 		6382FBB82869A69C00D44C82 /* MatchObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchObject.swift; sourceTree = "<group>"; };
 		63C31E71284DFD650083AD8B /* P12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = P12.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63C31E74284DFD650083AD8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				6365FE8D2857889C005C363A /* LeaguesCollectionViewCell.xib */,
 				63680C942858933A009E99D2 /* RankingTableViewCell.swift */,
 				63680C952858933A009E99D2 /* RankingTableViewCell.xib */,
+				6380E0F0287C593D003396F4 /* ResultTableViewCell.swift */,
+				6380E0F1287C593D003396F4 /* ResultTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -414,6 +420,7 @@
 			files = (
 				63C31EBC284E11860083AD8B /* FirstLaunchViewController.xib in Resources */,
 				63C31E84284DFD660083AD8B /* LaunchScreen.storyboard in Resources */,
+				6380E0F3287C593D003396F4 /* ResultTableViewCell.xib in Resources */,
 				63C31E81284DFD660083AD8B /* Assets.xcassets in Resources */,
 				6365FE8F2857889C005C363A /* LeaguesCollectionViewCell.xib in Resources */,
 				63680C972858933A009E99D2 /* RankingTableViewCell.xib in Resources */,
@@ -460,6 +467,7 @@
 				63C31E77284DFD650083AD8B /* SceneDelegate.swift in Sources */,
 				63C31E7F284DFD650083AD8B /* P12.xcdatamodeld in Sources */,
 				63C31EB6284DFEB90083AD8B /* Data.swift in Sources */,
+				6380E0F2287C593D003396F4 /* ResultTableViewCell.swift in Sources */,
 				63C31EC0284E51CC0083AD8B /* RankingViewController.swift in Sources */,
 				6365FE9528579A5E005C363A /* GamesLeaguesData.swift in Sources */,
 				63C31EC2284E51F00083AD8B /* ResultViewController.swift in Sources */,

@@ -13,9 +13,30 @@ struct RankingData: Codable {
     let total: Int?
     let wins: Int?
 }
+struct Team: Codable {
+    let acronym: String?
+    let id: Int
+    let imageURL: String
+    let location: String?
+    let modifiedAt: String
+    let name, slug: String
 
+    enum CodingKeys: String, CodingKey {
+        case acronym, id
+        case imageURL = "image_url"
+        case location
+        case modifiedAt = "modified_at"
+        case name, slug
+    }
+} 
 
 struct DBRankingData {
     let name: String
     let url : String
+}
+
+struct URLFromDB: Codable {
+    let name: String
+    let url: String
+    let imgurl: String
 }

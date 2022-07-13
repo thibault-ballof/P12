@@ -13,29 +13,63 @@ import Firebase
 class Service {
     
     static let shared = Service()
+    private init() {}
+
     private let db = Firestore.firestore()
     var dataFromDB: URLFromDB?
     private var leagues: [String] = []
-    
-    func fetchMatch(typeOfMatch: String, completionHandler: @escaping ([DataJson]?) -> Void){
-        let url = URL(string:  "https://api.pandascore.co/matches/" + "\(typeOfMatch)" + "?sort=&page=1&per_page=50&token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")!
-       
+    var matchData: [PandaJson]!
+
+    private var session = Session(configuration: .default)
+    init(session: Session) {
+        self.session = session
+    }
+    func fetch(ingredient: [String], callback: @escaping (Bool, [PandaJson]?) -> Void) {
+
+
+
+        let request = session.request("https://api.pandascore.co/matches/upcoming?sort=&page=1&per_page=50&token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")
+
+        request.response { (receivedData) in
+
+            guard receivedData.response?.statusCode == 200 else {
+                callback(false, nil)
+                return
+            }
+
+            guard let responseJSON = try? JSONDecoder().decode([PandaJson].self, from: receivedData.data!) else {
+                callback(false, nil)
+                return
+            }
+
+            callback(true, responseJSON)
+
+
+
+        }
+
+    }
+
+
+    func fetchMatch(completionHandler: @escaping ([PandaJson]?) -> Void){
+        let url = URL(string:  "https://api.pandascore.co/matches/upcoming?sort=&page=1&per_page=50&token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")!
+
+
         AF.request(url)
             .validate()
-            .responseDecodable(of: [DataJson].self) { (response) in
+            .responseDecodable(of: [PandaJson].self) { (response) in
                 guard let matchs = response.value else { return }
-                
                 completionHandler(matchs)
             }
         
     }
     
-    func fetchLeagues(game: String, completionHandler: @escaping ([DataJson]?) -> Void) {
+    func fetchLeagues(game: String, completionHandler: @escaping ([PandaJson]?) -> Void) {
         let url = URL(string:  "https://api.pandascore.co/" + game + "/tournaments?&token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")!
         print(url)
         AF.request(url)
             .validate()
-            .responseDecodable(of: [DataJson].self) { (response) in
+            .responseDecodable(of: [PandaJson].self) { (response) in
                 guard let matchs = response.value else { return }
                 completionHandler(matchs)
             }
@@ -47,10 +81,11 @@ class Service {
         AF.request(url)
             .validate()
             .responseDecodable(of: [RankingData].self) { (response) in
-                print(response)
+
                 guard let matchs = response.value else { return }
+
                 completionHandler(matchs)
-                print(matchs.count)
+                
             }
     }
     
