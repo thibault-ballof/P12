@@ -36,7 +36,10 @@ struct DBRankingData {
 }
 
 struct URLFromDB: Codable {
-    let name: String
-    let url: String
-    let imgurl: String
+    let name: String?
+    let url: String?
+    let imgurl: String?
+    
 }
+
+

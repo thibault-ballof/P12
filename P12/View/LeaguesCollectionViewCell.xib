@@ -10,41 +10,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LeaguesCell" id="gTV-IL-0wX" customClass="LeaguesCollectionViewCell" customModule="P12" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="142" height="27"/>
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="142" height="27"/>
+                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fifa" translatesAutoresizingMaskIntoConstraints="NO" id="OnU-zU-YKI">
-                        <rect key="frame" x="0.0" y="2" width="25" height="25"/>
+                        <rect key="frame" x="2.5" y="2.5" width="45" height="45"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="25" id="HhO-UL-CI2"/>
-                            <constraint firstAttribute="width" secondItem="OnU-zU-YKI" secondAttribute="height" multiplier="1:1" id="eKM-G2-HqX"/>
-                            <constraint firstAttribute="height" constant="25" id="jlX-5m-YSS"/>
+                            <constraint firstAttribute="width" constant="45" id="EZd-YB-nD9"/>
+                            <constraint firstAttribute="height" constant="45" id="OKe-Td-IpD"/>
+                            <constraint firstAttribute="width" secondItem="OnU-zU-YKI" secondAttribute="height" multiplier="1:1" id="RKJ-5V-v2T"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aau-0r-8yQ">
-                        <rect key="frame" x="50" y="3" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="0.89803922179999995" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="aau-0r-8yQ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="A9w-AN-xOU"/>
-                <constraint firstItem="OnU-zU-YKI" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="W6H-1P-DDX"/>
-                <constraint firstItem="OnU-zU-YKI" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ggM-73-mg2"/>
-                <constraint firstItem="aau-0r-8yQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="zsy-OH-X5D"/>
+                <constraint firstItem="OnU-zU-YKI" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="MUY-6Y-Qor"/>
+                <constraint firstItem="OnU-zU-YKI" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="OnF-Ta-4HT"/>
             </constraints>
             <connections>
-                <outlet property="label" destination="aau-0r-8yQ" id="31U-S3-g6I"/>
                 <outlet property="leagueImage" destination="OnU-zU-YKI" id="QK4-6Z-Faj"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="96.763392857142847"/>
+            <point key="canvasLocation" x="131.8840579710145" y="96.428571428571431"/>
         </collectionViewCell>
     </objects>
     <resources>

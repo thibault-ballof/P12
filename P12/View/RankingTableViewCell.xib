@@ -44,6 +44,7 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" red="0.16493055555555558" green="0.16493055555555558" blue="0.16493055555555558" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
             <connections>
                 <outlet property="rankLabel" destination="MUE-9U-u08" id="d2K-tb-spn"/>
                 <outlet property="scoreLabel" destination="Wfn-ya-9uK" id="4ke-0g-czL"/>

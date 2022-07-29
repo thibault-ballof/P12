@@ -8,6 +8,6 @@
 import Foundation
 import Alamofire
 
-/*protocol SessionProtocol {
-    func request(url: URL, callback: @escaping (AFDataResponse<PandaJson>) -> Void)
-}*/
+protocol SessionProtocol {
+    func request(url: URL, callback: @escaping (AFDataResponse<PandaJSON>) -> Void)
+}

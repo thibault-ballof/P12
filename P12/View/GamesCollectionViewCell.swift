@@ -7,42 +7,60 @@
 
 import UIKit
 
-class GamesCollectionViewCell: UICollectionViewCell {
+class GamesCollectionViewCell: UICollectionViewCell{
     
     
-    private var cornerRadius: CGFloat = 5.0
+    private var cornerRadius: CGFloat = 5
     
+
+
     @IBOutlet weak var gameImage: UIImageView!
-    @IBOutlet weak var Label: UILabel!
+    @IBOutlet weak var view: UIView!
     
-    
-    override func awakeFromNib() {
-            super.awakeFromNib()
-                
-            // Apply rounded corners to contentView
-            contentView.layer.cornerRadius = cornerRadius
-            contentView.layer.masksToBounds = true
-            
-            // Set masks to bounds to false to avoid the shadow
-            // from being clipped to the corner radius
-            layer.cornerRadius = cornerRadius
-            layer.masksToBounds = false
-            
-            // Apply a shadow
-            layer.shadowRadius = 8.0
-            layer.shadowOpacity = 0.10
-            layer.shadowColor = UIColor.black.cgColor
-            layer.shadowOffset = CGSize(width: 0, height: 5)
+
+
+
+    override func draw(_ rect: CGRect) { //Your code should go here.
+        super.draw(rect)
+            self.layer.cornerRadius = self.frame.size.width / 2
+
         }
-        
-        override func layoutSubviews() {
-            super.layoutSubviews()
-            
-            // Improve scrolling performance with an explicit shadowPath
-            layer.shadowPath = UIBezierPath(
-                roundedRect: bounds,
-                cornerRadius: cornerRadius
-            ).cgPath
-}
+    override class func awakeFromNib() {
+    }
+
+    override var isHighlighted: Bool {
+           didSet {
+               if self.isHighlighted {
+                   print("yes")
+                   self.layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1)
+                   self.layer.borderWidth = 1
+                   //view.layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1)
+                   //setupcolor(view: view)
+                  // view.layer.borderWidth = 5
+               } else {
+                   print("no")
+                   self.layer.borderWidth = 0
+                   view.layer.borderColor = nil
+               }
+           }
+       }
+
+    func setupcolor(view: UIView) {
+        let gradient = CAGradientLayer()
+        gradient.frame =  CGRect(origin: CGPoint.zero, size: self.view.frame.size)
+        gradient.colors = [UIColor.blue.cgColor, UIColor.green.cgColor]
+
+        let shape = CAShapeLayer()
+        shape.lineWidth = 2
+        shape.path = UIBezierPath(rect: self.view.bounds).cgPath
+        shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        gradient.mask = shape
+
+        self.view.layer.addSublayer(gradient)
+    }
+
+
+
 }
 
