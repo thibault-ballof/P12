@@ -53,7 +53,7 @@ class RankingViewController: UIViewController  {
         gameCollectionView.showsHorizontalScrollIndicator = false
         leaguesCollectionView.showsHorizontalScrollIndicator = false
         getLeagueName()
-        //getLeagueURL()
+        
 
 
 
@@ -69,6 +69,7 @@ class RankingViewController: UIViewController  {
         
     }
 
+   
     func getGamesList() {
         self.games = [String]()
 

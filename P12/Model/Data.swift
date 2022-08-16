@@ -16,11 +16,19 @@ struct Matchs {
 struct PandaJSON: Codable {
     //let winner: JSONNull?
     let serie_id: Int
+    let live_embed_url: String?
    // let officialStreamURL: JSONNull?
     //let leagueID: Int
     //let scheduledAt, modifiedAt: String
-    //let serie: Serie
+    let status: String?
+    let original_scheduled_at: String?
+    let serie: Serie
+    let number_of_games: Int?
+   // let live: Live
+    let league: League
+    let games: [Games]
     let opponents : [Opponents]
+    let results: [Results]
 
     //enum CodingKeys: String, CodingKey {
         //case winner
@@ -31,11 +39,32 @@ struct PandaJSON: Codable {
         //case modifiedAt = "modified_at"
         //case serie
 //}
+    struct Results: Codable {
+        let score: Int?
+        let team_id: Int?
+    }
+
+    struct Serie: Codable{
+        let begin_at: String?
+    }
+
+    struct League: Codable {
+        let name: String
+        let image_url: String?
+    }
+
+   struct Games: Codable {
+        let match_id: Int?
+    }
 }
 struct Opponents: Codable {
     let opponent: Opponent
     let type: String
 }
+
+/*struct Live: Codable {
+    let url: String
+}*/
 
 // MARK: - OpponentOpponent
 struct Opponent: Codable {

@@ -30,7 +30,7 @@ class GamesCollectionViewCell: UICollectionViewCell{
 
     override var isHighlighted: Bool {
            didSet {
-               if self.isHighlighted {
+               if self.isSelected {
                    print("yes")
                    self.layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1)
                    self.layer.borderWidth = 1

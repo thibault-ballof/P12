@@ -50,7 +50,7 @@ class NetworkCall: NSObject {
 
     func executeQuery<T>(completion: @escaping (Result<T, Error>) -> Void) where T: Codable {
 
-        AF.request(url,method: method,parameters: parameters,encoding: encoding, headers: headers).responseData(completionHandler: {response in
+        AF.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
             switch response.result{
             case .success(let res):
                 if let code = response.response?.statusCode{
@@ -71,5 +71,10 @@ class NetworkCall: NSObject {
                 completion(.failure(error))
             }
         })
+    }
+
+    func fetchData(url: String, data: Codable) {
+        
+
     }
 }

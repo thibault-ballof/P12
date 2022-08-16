@@ -9,10 +9,16 @@ import UIKit
 
 class ResultTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var leagueImage: UIImageView!
+    @IBOutlet weak var leagueLabel: UILabel!
     @IBOutlet weak var t2Label: UILabel!
     @IBOutlet weak var visitorImage: UIImageView!
     @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var t1Label: UILabel!
+    @IBOutlet weak var redDot: UILabel!
+
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +29,7 @@ class ResultTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         // Setup UI for Cell

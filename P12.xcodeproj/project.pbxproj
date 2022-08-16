@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6318325B28894F6C00111D7A /* GamesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318325A28894F6C00111D7A /* GamesObject.swift */; };
+		63401EBD289AC86B00CE7868 /* MatchDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63401EBC289AC86B00CE7868 /* MatchDetailViewController.swift */; };
 		63432E0C2886D62700865499 /* GamesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63432E0A2886D62700865499 /* GamesCollectionViewCell.xib */; };
 		63432E102886DC6600865499 /* UIViewController+AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63432E0F2886DC6600865499 /* UIViewController+AlertController.swift */; };
 		63432E13288700DC00865499 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 63432E12288700DC00865499 /* SDWebImage */; };
@@ -45,6 +46,8 @@
 		63D341FE285CE7F7003C556C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63D341FD285CE7F7003C556C /* GoogleService-Info.plist */; };
 		63D341FF285CE7F7003C556C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63D341FD285CE7F7003C556C /* GoogleService-Info.plist */; };
 		63D34200285CE7F7003C556C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63D341FD285CE7F7003C556C /* GoogleService-Info.plist */; };
+		63DC6D1F28A634C900B01ED3 /* BebasNeue-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63DC6D1E28A634C900B01ED3 /* BebasNeue-Regular.otf */; };
+		63F68B8028AA4FFE008F7FB0 /* Made Tommy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63F68B7F28AA4FFE008F7FB0 /* Made Tommy.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		6318325A28894F6C00111D7A /* GamesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesObject.swift; sourceTree = "<group>"; };
+		63401EBC289AC86B00CE7868 /* MatchDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailViewController.swift; sourceTree = "<group>"; };
 		63432E0A2886D62700865499 /* GamesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesCollectionViewCell.xib; sourceTree = "<group>"; };
 		63432E0F2886DC6600865499 /* UIViewController+AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AlertController.swift"; sourceTree = "<group>"; };
 		635A5E5F28900B1100D17523 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 		63C31EBF284E51CC0083AD8B /* RankingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingViewController.swift; sourceTree = "<group>"; };
 		63C31EC1284E51F00083AD8B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		63D341FD285CE7F7003C556C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		63DC6D1E28A634C900B01ED3 /* BebasNeue-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.otf"; sourceTree = "<group>"; };
+		63F68B7F28AA4FFE008F7FB0 /* Made Tommy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Made Tommy.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +176,9 @@
 				63C31E74284DFD650083AD8B /* AppDelegate.swift */,
 				63C31E76284DFD650083AD8B /* SceneDelegate.swift */,
 				63C31E80284DFD660083AD8B /* Assets.xcassets */,
+				63F68B7F28AA4FFE008F7FB0 /* Made Tommy.otf */,
 				63D341FD285CE7F7003C556C /* GoogleService-Info.plist */,
+				63DC6D1E28A634C900B01ED3 /* BebasNeue-Regular.otf */,
 				63C31E85284DFD660083AD8B /* Info.plist */,
 				63C31E7D284DFD650083AD8B /* P12.xcdatamodeld */,
 			);
@@ -221,16 +229,12 @@
 		63C31EA9284DFD7D0083AD8B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				63C48FC328A5135F0086A279 /* Result */,
+				63C48FC228A5134A0086A279 /* Ranking */,
+				63C48FC128A513360086A279 /* LeagueCollection */,
+				63C48FC028A513260086A279 /* GameCollection */,
 				63C31E82284DFD660083AD8B /* LaunchScreen.storyboard */,
 				63C31E7A284DFD650083AD8B /* Main.storyboard */,
-				6365FE8A28577DFB005C363A /* GamesCollectionViewCell.swift */,
-				6365FE8C2857889C005C363A /* LeaguesCollectionViewCell.swift */,
-				6365FE8D2857889C005C363A /* LeaguesCollectionViewCell.xib */,
-				63680C942858933A009E99D2 /* RankingTableViewCell.swift */,
-				63680C952858933A009E99D2 /* RankingTableViewCell.xib */,
-				6380E0F0287C593D003396F4 /* ResultTableViewCell.swift */,
-				6380E0F1287C593D003396F4 /* ResultTableViewCell.xib */,
-				63432E0A2886D62700865499 /* GamesCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -241,8 +245,45 @@
 				63C31EC1284E51F00083AD8B /* ResultViewController.swift */,
 				63C31EBF284E51CC0083AD8B /* RankingViewController.swift */,
 				63C31EB9284E11860083AD8B /* FirstLaunchViewController.swift */,
+				63401EBC289AC86B00CE7868 /* MatchDetailViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		63C48FC028A513260086A279 /* GameCollection */ = {
+			isa = PBXGroup;
+			children = (
+				6365FE8A28577DFB005C363A /* GamesCollectionViewCell.swift */,
+				63432E0A2886D62700865499 /* GamesCollectionViewCell.xib */,
+			);
+			path = GameCollection;
+			sourceTree = "<group>";
+		};
+		63C48FC128A513360086A279 /* LeagueCollection */ = {
+			isa = PBXGroup;
+			children = (
+				6365FE8C2857889C005C363A /* LeaguesCollectionViewCell.swift */,
+				6365FE8D2857889C005C363A /* LeaguesCollectionViewCell.xib */,
+			);
+			path = LeagueCollection;
+			sourceTree = "<group>";
+		};
+		63C48FC228A5134A0086A279 /* Ranking */ = {
+			isa = PBXGroup;
+			children = (
+				63680C942858933A009E99D2 /* RankingTableViewCell.swift */,
+				63680C952858933A009E99D2 /* RankingTableViewCell.xib */,
+			);
+			path = Ranking;
+			sourceTree = "<group>";
+		};
+		63C48FC328A5135F0086A279 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				6380E0F0287C593D003396F4 /* ResultTableViewCell.swift */,
+				6380E0F1287C593D003396F4 /* ResultTableViewCell.xib */,
+			);
+			path = Result;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,7 +406,9 @@
 				6380E0F3287C593D003396F4 /* ResultTableViewCell.xib in Resources */,
 				63C31E81284DFD660083AD8B /* Assets.xcassets in Resources */,
 				63432E0C2886D62700865499 /* GamesCollectionViewCell.xib in Resources */,
+				63F68B8028AA4FFE008F7FB0 /* Made Tommy.otf in Resources */,
 				6365FE8F2857889C005C363A /* LeaguesCollectionViewCell.xib in Resources */,
+				63DC6D1F28A634C900B01ED3 /* BebasNeue-Regular.otf in Resources */,
 				63680C972858933A009E99D2 /* RankingTableViewCell.xib in Resources */,
 				63B7F4042882ADB6007413AE /* match.json in Resources */,
 				63C31E7C284DFD650083AD8B /* Main.storyboard in Resources */,
@@ -409,6 +452,7 @@
 				63C31EBB284E11860083AD8B /* FirstLaunchViewController.swift in Sources */,
 				63C31EB0284DFDC10083AD8B /* Service.swift in Sources */,
 				63C31E77284DFD650083AD8B /* SceneDelegate.swift in Sources */,
+				63401EBD289AC86B00CE7868 /* MatchDetailViewController.swift in Sources */,
 				63C31E7F284DFD650083AD8B /* P12.xcdatamodeld in Sources */,
 				635A5E6028900B1100D17523 /* Network.swift in Sources */,
 				63C31EB6284DFEB90083AD8B /* Data.swift in Sources */,

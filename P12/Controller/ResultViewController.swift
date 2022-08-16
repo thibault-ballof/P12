@@ -34,7 +34,8 @@ class ResultViewController: UIViewController {
     private var gamesList: [String] = []
     private var urls: [String] = []
     private var gamesObject: [GamesResultObject]?
-
+    private var matchURL = ""
+    private var embedURL = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +69,23 @@ class ResultViewController: UIViewController {
         getGamesList()
         getGamesResultURL()
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "PassMatchData" {
+            let sucessVC = segue.destination as? MatchDetailViewController
+            sucessVC?.matchID = matchURL
+            sucessVC?.embedURL = embedURL
+        }
+    }
+    func showDate(dateFormJSON: String, label: UILabel) {
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
 
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "d MMM, h:mm"
+        guard let dates = dateFormatterGet.date(from: dateFormJSON) else { return }
+        label.text = dateFormatterPrint.string(from: dates)
+
+    }
     func getGamesList() {
 
         self.gamesList = [String]()
@@ -85,7 +102,7 @@ class ResultViewController: UIViewController {
             }
             print("URLS : \(self.urls)")
             //self.createGameArray()
-            self.fetchMatch()
+            //self.fetchMatch()
 
 
             self.collectionView.reloadData()
@@ -116,6 +133,7 @@ class ResultViewController: UIViewController {
 
 
         }
+
            Service.shared.fetchMatch(url: urls[1]) {  match in
 
                 self.data = match
@@ -137,7 +155,7 @@ class ResultViewController: UIViewController {
     func createGameArray() {
 
         for i in 1..<games.count {
-            if selectedGame as! String == games[i-1].name {
+            if selectedGame == games[i-1].name {
                 games.remove(at: i-1)
             }
         }
@@ -153,35 +171,47 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         return matchsArray[section].pandaJSON.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
+
         matchsArray.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as! ResultTableViewCell
 
-        if matchsArray[indexPath.section].pandaJSON[indexPath.row].opponents.count == 0 {
-             print("pas de match")
-        } else {
+        if matchsArray[indexPath.section].pandaJSON[indexPath.row].opponents.count > 1  {
             cell.t1Label.text = matchsArray[indexPath.section].pandaJSON[indexPath.row].opponents[0].opponent.name ?? "Pas encore connu"
             cell.t2Label.text = matchsArray[indexPath.section].pandaJSON[indexPath.row].opponents[1].opponent.name ?? "Pas encore connu"
             cell.visitorImage.sd_setImage(with: URL(string: matchsArray[indexPath.section].pandaJSON[indexPath.row].opponents[0].opponent.image_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
             cell.homeImage.sd_setImage(with: URL(string: matchsArray[indexPath.section].pandaJSON[indexPath.row].opponents[1].opponent.image_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
-           /*cell.t1Label.text = data?[indexPath.row].opponents[0].opponent.name ?? "Pas encore connu"
-            cell.t2Label.text = data?[indexPath.row].opponents[1].opponent.name ?? "Pas encore connu"
-            cell.visitorImage.sd_setImage(with: URL(string: data?[indexPath.row].opponents[1].opponent.image_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
-            cell.homeImage.sd_setImage(with: URL(string: data?[indexPath.row].opponents[0].opponent.image_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))*/
+            cell.leagueImage.sd_setImage(with: URL(string: matchsArray[indexPath.section].pandaJSON[indexPath.row].league.image_url ?? ""), placeholderImage: UIImage(named: "placeholder.png"))
+            cell.leagueLabel.text = matchsArray[indexPath.section].pandaJSON[indexPath.row].league.name
+            showDate(dateFormJSON: matchsArray[indexPath.section].pandaJSON[indexPath.row].original_scheduled_at ?? "", label: cell.dateLabel)
+            cell.redDot.isHidden = true
+
+        } 
+        if matchsArray[indexPath.section].type == "Matchs en cours" {
+            cell.redDot.isHidden = false
+
         }
-
-
-       //  data[indexPath.row].opponents[0].opponent.name
-
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 127
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !matchsArray[indexPath.section].pandaJSON[indexPath.row].games.isEmpty {
+            if let matchurl =  matchsArray[indexPath.section].pandaJSON[indexPath.row].games[indexPath.row].match_id {
+                matchURL = "\(matchurl)"
+            }
+             //"\(String(describing: matchsArray[indexPath.section].pandaJSON[indexPath.row].games[indexPath.row].match_id!))"
+            embedURL = matchsArray[indexPath.section].pandaJSON[indexPath.row].live_embed_url ?? ""
+        }
+
+        performSegue(withIdentifier: "PassMatchData", sender: self)
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -234,13 +264,15 @@ extension ResultViewController: UICollectionViewDelegate, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
+
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        // gameCollectionView.deselectItem(at: indexPath as IndexPath, animated: true)
-
+        print("coucou")
             collectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)
             selectedGame = gamesList[indexPath.row]
             getGamesResultURL()
-        tableView.reloadData()
+            //tableView.reloadData()
             //getLeaguesImageURL()
     }
 }
