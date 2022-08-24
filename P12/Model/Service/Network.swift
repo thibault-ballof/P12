@@ -24,13 +24,19 @@ isJSONRequest = set to true by default. if you want to send normal request set i
 */
 class NetworkCall: NSObject {
 
+    private var session = Session(configuration: .default)
+    init(session: Session) {
+        self.session = session
+    }
+
+
     enum services: String{
         case posts = "posts"
     }
     var parameters = Parameters()
     var headers = HTTPHeaders()
     var method: HTTPMethod!
-    var url: String! = "https://jsonplaceholder.typicode.com/"
+    var url: String! = "https://google.fr"
     var encoding: ParameterEncoding! = JSONEncoding.default
 
     init(headers: [String:String] = [:],url :String?,service :services? = nil, method: HTTPMethod = .post, isJSONRequest: Bool = false){
@@ -49,6 +55,9 @@ class NetworkCall: NSObject {
     }
 
     func executeQuery<T>(completion: @escaping (Result<T, Error>) -> Void) where T: Codable {
+
+        
+        //session.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
 
         AF.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
             switch response.result{
@@ -73,8 +82,4 @@ class NetworkCall: NSObject {
         })
     }
 
-    func fetchData(url: String, data: Codable) {
-        
-
-    }
 }

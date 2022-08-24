@@ -33,11 +33,22 @@ class RankingViewController: UIViewController  {
     private var documentData: [[String : Any]] = [[:]]
     private var dataFromDB: URLFromDB?
     private var leaguesFromDB: [URLFromDB]?
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
+
+    /*  private let item: CustomTabItem
+
+     init(item: CustomTabItem) {
+     self.item = item
+     super.init(nibName: nil, bundle: nil)
+     }
+
+     required init?(coder: NSCoder) {
+     fatalError("init(coder:) has not been implemented")
+     }
+
+     override func viewDidLayoutSubviews() {
+     super.viewDidLayoutSubviews()
+
+     }*/
     
     
     override func viewDidLoad() {
@@ -53,6 +64,7 @@ class RankingViewController: UIViewController  {
         gameCollectionView.showsHorizontalScrollIndicator = false
         leaguesCollectionView.showsHorizontalScrollIndicator = false
         getLeagueName()
+
         
 
 
@@ -69,12 +81,15 @@ class RankingViewController: UIViewController  {
         
     }
 
-   
+
+
+
+
+
     func getGamesList() {
         self.games = [String]()
 
         Service.shared.fetchGameFromDB { data in
-            //print("Data : \(data)")
 
             for i in 1...data.count {
 
@@ -87,7 +102,6 @@ class RankingViewController: UIViewController  {
         }
     }
     func createGameArray() {
-        print(games.count)
         for i in 1..<games.count {
             if selectedGame as! String == games[i-1] {
                 games.remove(at: i-1)
@@ -100,8 +114,10 @@ class RankingViewController: UIViewController  {
         Service.shared.fetchLeagueDB(collection: selectedGame as! String) { data in
             self.leaguesFromDB = data
             self.leaguesCollectionView.reloadData()
-            self.tableView.reloadData()
+
         }
+        getRanking(url: leaguesFromDB?.first?.url ?? "")
+        tableView.reloadData()
     }
     
 
@@ -113,12 +129,18 @@ class RankingViewController: UIViewController  {
     }
 
     func getRanking(url: String) {
-        Service.shared.fetchRanking(url: url) { ranking in
-            self.rankingData = ranking!
-            self.leaguesCollectionView.reloadData()
-            self.tableView.reloadData()
-
+        NetworkCall(url: url, service: .posts, method: .get).executeQuery(){
+            (result: Result<[RankingData],Error>) in
+            switch result{
+            case .success(let post):
+                self.rankingData = post
+                self.leaguesCollectionView.reloadData()
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
         }
+        tableView.reloadData()
     }
 }
 
@@ -170,7 +192,7 @@ extension RankingViewController: UICollectionViewDelegate, UICollectionViewDeleg
         return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // gameCollectionView.deselectItem(at: indexPath as IndexPath, animated: true)
+        // gameCollectionView.deselectItem(at: indexPath as IndexPath, animated: true)
         if collectionView == self.gameCollectionView {
             gameCollectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)
             selectedGame = games[indexPath.row]
@@ -183,6 +205,7 @@ extension RankingViewController: UICollectionViewDelegate, UICollectionViewDeleg
             if let selectedLeague = selectedLeague {
                 leagueLabel.text = "\(selectedLeague)"
             }
+
             self.getRanking(url: self.leaguesFromDB![indexPath.row].url ?? "")
 
         }

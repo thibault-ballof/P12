@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ypg-me-l09">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ent-hW-PKb">
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -14,7 +14,27 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Resultat-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="n9L-Ww-3BT">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBar" modalPresentationStyle="fullScreen" id="3rC-la-bUQ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eNC-bO-mR6"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iDM-tn-F1W">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.1058823466" green="0.109803915" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <tabBarAppearance key="standardAppearance"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="ukO-2H-jeB" kind="relationship" relationship="viewControllers" id="VvB-ly-0OI"/>
+                        <segue destination="uMf-pw-gOH" kind="relationship" relationship="viewControllers" id="5id-7m-Nvl"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZE-GG-q6H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-838" y="-504"/>
+        </scene>
+        <!--Ranking View Controller-->
         <scene sceneID="ECf-Pw-dGy">
             <objects>
                 <viewController storyboardIdentifier="RankingViewController" modalPresentationStyle="fullScreen" id="uMf-pw-gOH" customClass="RankingViewController" customModule="P12" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,9 +123,7 @@
                         <viewLayoutGuide key="safeArea" id="h72-sa-NCP"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Resultat" image="list.bullet.circle" catalog="system" selectedImage="list.bullet.circle" id="PJj-2e-8Sr">
-                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-trophy-48" selectedImage="icons8-trophy-48" id="PJj-2e-8Sr"/>
                     <connections>
                         <outlet property="gameCollectionView" destination="huE-d9-hJO" id="Tcn-PQ-15f"/>
                         <outlet property="leagueLabel" destination="JhS-NT-Cf7" id="n8W-Be-4zV"/>
@@ -115,18 +133,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGU-Ju-mQH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="718.84057971014499" y="-150"/>
+            <point key="canvasLocation" x="319" y="-155"/>
         </scene>
-        <!--Item-->
+        <!--Result View Controller-->
         <scene sceneID="SD8-W3-VJ8">
             <objects>
-                <viewController storyboardIdentifier="ResultViewController" id="ukO-2H-jeB" customClass="ResultViewController" customModule="P12" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ResultViewController" modalPresentationStyle="fullScreen" id="ukO-2H-jeB" customClass="ResultViewController" customModule="P12" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3nG-zL-u8T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="k5O-17-ss5">
-                                <rect key="frame" x="0.0" y="208" width="414" height="551"/>
+                                <rect key="frame" x="0.0" y="152" width="414" height="607"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -169,7 +187,9 @@
                         <viewLayoutGuide key="safeArea" id="StN-3S-zWD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="calendar.circle" catalog="system" id="A8u-os-MPO"/>
+                    <tabBarItem key="tabBarItem" title="" image="icons8-calendar-48" selectedImage="icons8-calendar-48" id="A8u-os-MPO">
+                        <color key="badgeColor" red="0.1058823466" green="0.109803915" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="Fqy-Ae-yf8"/>
                     <connections>
                         <outlet property="collectionView" destination="Re9-cl-yDC" id="qqC-3t-z4Q"/>
@@ -179,7 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SqY-DW-IYm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="719" y="-816"/>
+            <point key="canvasLocation" x="319" y="-816"/>
         </scene>
         <!--Match Detail View Controller-->
         <scene sceneID="eWk-rW-RbI">
@@ -229,20 +249,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB8-F1-dz0">
-                                <rect key="frame" x="21" y="507" width="152" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjZ-kX-6Eo">
-                                <rect key="frame" x="241" y="506" width="152" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xnX-BG-LDC">
                                 <rect key="frame" x="149" y="432" width="116" height="34"/>
                                 <constraints>
@@ -261,10 +267,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zil-SU-Yju">
-                                <rect key="frame" x="153" y="34" width="240" height="128"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZU1-Hn-FjJ" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="296" y="100" width="87" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="golive"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dB8-F1-dz0">
+                                <rect key="frame" x="20" y="507" width="145" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjZ-kX-6Eo">
+                                <rect key="frame" x="245" y="507" width="145" height="19"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tOV-fQ-HpU"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -296,10 +320,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="WTK-i2-zmZ"/>
                     <connections>
+                        <outlet property="animationView" destination="ZU1-Hn-FjJ" id="8ZO-GU-4tq"/>
                         <outlet property="homeImage" destination="ez9-Iw-8sN" id="Zcw-kW-Ghc"/>
                         <outlet property="homeLabel" destination="dB8-F1-dz0" id="jpg-EO-9t2"/>
                         <outlet property="leagueImage" destination="jrA-VH-SeX" id="I3p-2g-lcV"/>
-                        <outlet property="liveImage" destination="zil-SU-Yju" id="aQP-ak-XCi"/>
                         <outlet property="matchTypeLabel" destination="CDH-bl-YFo" id="FTN-oK-Uf4"/>
                         <outlet property="oppoImage" destination="Pvk-r1-VLP" id="qVo-fc-Nhg"/>
                         <outlet property="oppoLabel" destination="pjZ-kX-6Eo" id="YgF-X0-G2y"/>
@@ -310,29 +334,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q9c-at-kWP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2469.5652173913045" y="-816.29464285714278"/>
+            <point key="canvasLocation" x="1171" y="-816"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="mtj-Sr-dRK">
+        <!--Launch View Controller-->
+        <scene sceneID="7uY-jU-Jv9">
             <objects>
-                <tabBarController storyboardIdentifier="home" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="ypg-me-l09" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="2HJ-6i-30t"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="w1k-QB-0f5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <color key="tintColor" red="0.20000001789999999" green="0.46274507050000002" blue="0.5411764979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <color key="barTintColor" systemColor="systemBackgroundColor"/>
-                        <color key="selectedImageTintColor" red="0.20000001789999999" green="0.46274507050000002" blue="0.5411764979" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                    </tabBar>
+                <viewController storyboardIdentifier="home" id="ent-hW-PKb" customClass="LaunchViewController" customModule="P12" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0nw-sC-OPv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpA-iI-MEY" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="87" y="328" width="240" height="240"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YpA-iI-MEY" secondAttribute="height" multiplier="1:1" id="G4G-aL-AEJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="launch"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wo2-ah-1IW"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YpA-iI-MEY" firstAttribute="centerY" secondItem="0nw-sC-OPv" secondAttribute="centerY" id="4mb-3h-zCu"/>
+                            <constraint firstItem="YpA-iI-MEY" firstAttribute="top" secondItem="wo2-ah-1IW" secondAttribute="top" constant="284" id="Sly-Nb-Y8o"/>
+                            <constraint firstItem="YpA-iI-MEY" firstAttribute="centerX" secondItem="0nw-sC-OPv" secondAttribute="centerX" id="e6u-kX-cdO"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <segue destination="uMf-pw-gOH" kind="relationship" relationship="viewControllers" id="TiA-Cg-KKq"/>
-                        <segue destination="ukO-2H-jeB" kind="relationship" relationship="viewControllers" id="rLz-iW-Uod"/>
+                        <outlet property="animationView" destination="YpA-iI-MEY" id="l1H-E5-a7e"/>
+                        <segue destination="3rC-la-bUQ" kind="show" id="cqF-2V-Zw7"/>
                     </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Mq-aK-4EG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1he-kR-tEg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-172" y="-508"/>
+            <point key="canvasLocation" x="-1883" y="-504"/>
         </scene>
         <!--First Launch View Controller-->
         <scene sceneID="BGI-p8-rXs">
@@ -343,7 +381,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fh-kv-oEL">
-                                <rect key="frame" x="39" y="205" width="174" height="178"/>
+                                <rect key="frame" x="32" y="231" width="174" height="178"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="lol" imagePlacement="top">
@@ -369,8 +407,15 @@
                                     <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="qlf-6Q-XGi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quel jeu suivez-vous ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iha-CH-Qid">
+                                <rect key="frame" x="23" y="44" width="353" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9B-Wp-0fi">
-                                <rect key="frame" x="216" y="74" width="147" height="150"/>
+                                <rect key="frame" x="229" y="73" width="147" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="ow" imagePlacement="top">
@@ -388,13 +433,6 @@
                                     <action selector="addingGameToFavorite:" destination="orO-SH-vTE" eventType="touchUpInside" id="Lx8-bB-pYV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Quel jeu suivez-vous ? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iha-CH-Qid">
-                                <rect key="frame" x="23" y="44" width="353" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Mnd-vB-7JA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -404,20 +442,22 @@
                         <outletCollection property="gamebuttons" destination="0Fh-kv-oEL" collectionClass="NSMutableArray" id="yMe-Hl-8E4"/>
                         <outletCollection property="gamebuttons" destination="DD7-CI-jFi" collectionClass="NSMutableArray" id="MPg-wN-hab"/>
                         <outletCollection property="gamebuttons" destination="b9B-Wp-0fi" collectionClass="NSMutableArray" id="UfH-Em-qaP"/>
-                        <segue destination="ypg-me-l09" kind="showDetail" identifier="segueIdentifier" id="NdW-W0-hdW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sTi-4o-V28" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1319" y="-494"/>
+            <point key="canvasLocation" x="-2907" y="-504"/>
         </scene>
     </scenes>
     <resources>
-        <image name="calendar.circle" catalog="system" width="128" height="121"/>
         <image name="csgo" width="123" height="122"/>
-        <image name="list.bullet.circle" catalog="system" width="128" height="121"/>
+        <image name="icons8-calendar-48" width="48" height="48"/>
+        <image name="icons8-trophy-48" width="48" height="48"/>
         <image name="lol" width="150" height="150"/>
         <image name="ow" width="123" height="122"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Lottie
 
 class ResultTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var leagueImage: UIImageView!
     @IBOutlet weak var leagueLabel: UILabel!
@@ -22,6 +24,19 @@ class ResultTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
+        animationView.contentMode = .scaleAspectFit
+
+          // 2. Set animation loop mode
+
+          animationView.loopMode = .loop
+
+          // 3. Adjust animation speed
+
+        animationView.animationSpeed = 1.0
+
+          // 4. Play animation
+          animationView.play()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -39,8 +54,8 @@ class ResultTableViewCell: UITableViewCell {
         // from being clipped to the corner radius
         layer.cornerRadius = 5.0
         layer.masksToBounds = false
-        layer.borderWidth = 0.1
-        layer.borderColor = UIColor.gray.cgColor
+        layer.borderWidth = 0.2
+        layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1)
         // Apply a shadow
         layer.shadowRadius = 20.0
         layer.shadowOpacity = 0.10

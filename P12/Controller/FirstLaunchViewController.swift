@@ -18,17 +18,17 @@ class FirstLaunchViewController: UIViewController {
     @IBAction func addingGameToFavorite(_ sender: UIButton) {
         switch sender.tag {
         case 1:
-           selectedGames = "csgo"
+            selectedGames = "csgo"
             selectedLeagues = "IEM Cologne"
-           
+            
         case 2:
             selectedGames = "ow"
             selectedLeagues = "OW League"
-
+            
         case 3:
             selectedGames = "lol"
             selectedLeagues = "LFL"
-
+            
         default:
             break
         }
@@ -38,11 +38,11 @@ class FirstLaunchViewController: UIViewController {
         UserDefaults.standard.set(true, forKey: "alreadyLaunched")
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark  
         // Do any additional setup after loading the view.
     }
-
+    
 }

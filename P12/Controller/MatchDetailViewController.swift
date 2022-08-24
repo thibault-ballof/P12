@@ -6,14 +6,17 @@
 //
 import WebKit
 import UIKit
+import Lottie
+
 
 class MatchDetailViewController: UIViewController {
-
-
+    
+    @IBOutlet weak var animationView: AnimationView!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var leagueImage: UIImageView!
     @IBOutlet weak var liveImage: UIImageView!
-
+    
     @IBOutlet weak var videoPlayer: UIView!
     @IBOutlet weak var matchTypeLabel: UILabel!
     @IBOutlet weak var homeLabel: UILabel!
@@ -21,74 +24,63 @@ class MatchDetailViewController: UIViewController {
     @IBOutlet weak var oppoImage: UIImageView!
     @IBOutlet weak var oppoLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
-
+    
     var matchID = ""
     var embedURL = ""
-       override func viewDidLoad() {
-           overrideUserInterfaceStyle = .dark
+    override func viewDidLoad() {
+        //Live Animation
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 0.5
+        animationView.play()
+        overrideUserInterfaceStyle = .dark
+        
+        super.viewDidLoad()
 
-           super.viewDidLoad()
-           print("MATCH URL : \(matchID)")
-                   let webConf = WKWebViewConfiguration()
-                   webConf.allowsInlineMediaPlayback = true
-                   DispatchQueue.main.async {
-                       let webPlayer = WKWebView(frame: self.videoPlayer.bounds, configuration: webConf)
-                       self.videoPlayer.addSubview(webPlayer)
-                       guard let videoURL = URL(string: self.embedURL + "&parent=google.fr") else { return }
-                       let request = URLRequest(url: videoURL)
-                       webPlayer.load(request)
-       }
-           if embedURL == "" {
-               self.videoPlayer.isHidden = true
-           }
-
+        //Player Video
+        let webConf = WKWebViewConfiguration()
+        webConf.allowsInlineMediaPlayback = true
+        DispatchQueue.main.async {
+            let webPlayer = WKWebView(frame: self.videoPlayer.bounds, configuration: webConf)
+            self.videoPlayer.addSubview(webPlayer)
+            guard let videoURL = URL(string: self.embedURL + "&parent=google.fr") else { return }
+            let request = URLRequest(url: videoURL)
+            webPlayer.load(request)
+        }
+        if embedURL == "" {
+            self.videoPlayer.isHidden = true
+        }
+        
         setupUi()
-
-
+        
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-
-     */
     func setupUi() {
-        //print("https://api.pandascore.co/matches/" + matchID + "?token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")
-         NetworkCall(url: "https://api.pandascore.co/matches/" + matchID + "?token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4", service: .posts, method: .get).executeQuery(){
-                     (result: Result<PandaJSON,Error>) in
-                     switch result{
-                     case .success(let post):
-                         if let img = post.opponents[0].opponent.image_url {
-                             self.homeImage.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholder.png"))
-                         }
-                         if let img = post.opponents[1].opponent.image_url {
-                             self.oppoImage.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholder.png"))
-                         }
-                         self.leagueImage.sd_setImage(with: URL(string: post.league.image_url!))
-                         self.titleLabel.text = post.league.name
-                         self.homeLabel.text = post.opponents[0].opponent.name
-                         self.oppoLabel.text = post.opponents[1].opponent.name
-                         self.matchTypeLabel.text = "Best Of \(String(describing: post.number_of_games!))"
-                         self.resultLabel.text = "\(post.results[0].score!) - \(post.results[1].score!)"
-                         //if post.status == "" {
-                             let bundle = Bundle.main
-                             let gifUrl = bundle.url(forResource: "liveicon", withExtension: "gif")
-                             self.liveImage.sd_setImage(with: gifUrl)
-                         
-                         //}
-
-                         //print(post.status!)
-
-                     case .failure(let error):
-                         print(error)
-                     }
-                 }
-
+        NetworkCall(url: "https://api.pandascore.co/matches/" + matchID + "?token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4", service: .posts, method: .get).executeQuery(){
+            (result: Result<PandaJSON,Error>) in
+            switch result{
+            case .success(let post):
+                if let img = post.opponents[0].opponent.image_url {
+                    self.homeImage.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholder.png"))
+                }
+                if let img = post.opponents[1].opponent.image_url {
+                    self.oppoImage.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholder.png"))
+                }
+                
+                if let img = post.league.image_url {
+                    self.leagueImage.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholder.png"))
+                }
+                
+                self.titleLabel.text = post.league.name
+                self.homeLabel.text = post.opponents[0].opponent.name
+                self.oppoLabel.text = post.opponents[1].opponent.name
+                self.matchTypeLabel.text = "Best Of \(String(describing: post.number_of_games!))"
+                self.resultLabel.text = "\(post.results[0].score!) - \(post.results[1].score!)"    
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
     }
-    }
+}

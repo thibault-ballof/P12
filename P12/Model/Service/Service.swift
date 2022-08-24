@@ -25,65 +25,6 @@ class Service {
     var games: [String] = []
 
 
-    func fetch(callback: @escaping (Bool, [PandaJSON]?) -> Void) {
-        let url = URL(string:  "https://api.pandascore.co/matches/upcoming?sort=&page=1&per_page=50&token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")!
-        AF.request(url)
-            .validate()
-            .responseDecodable(of: [PandaJSON].self) { (response) in
-                guard let matchs = response.value else {
-                    callback(false, nil)
-                    return
-                }
-                callback(true, matchs)
-            }
-    }
-
-
-    func fetchMatch(url: String, completionHandler: @escaping ([PandaJSON]?) -> Void){
-
-        let url = URL(string: url)!
-
-        AF.request(url)
-            .validate()
-            .responseDecodable(of: [PandaJSON].self) { (response) in
-                guard let matchs = response.value else { return }
-                /*for i in 1...matchs.count {
-                 if matchs[i-1].opponents.isEmpty == false {
-                 self.matchData.append(matchs[i-1])
-                 }*/
-
-                completionHandler(matchs)
-            }
-
-
-        
-    }
-    
-    func fetchLeagues(game: String, completionHandler: @escaping ([PandaJSON]?) -> Void) {
-        let url = URL(string:  "https://api.pandascore.co/" + game + "/tournaments?&token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4")!
-        print(url)
-        AF.request(url)
-            .validate()
-            .responseDecodable(of: [PandaJSON].self) { (response) in
-                guard let matchs = response.value else { return }
-                completionHandler(matchs)
-            }
-    }
-    func fetchRanking(url: String, completionHandler: @escaping ([RankingData]?) -> Void) {
-        
-        let url = URL(string:  url)!
-        print(url)
-        AF.request(url)
-            .validate()
-            .responseDecodable(of: [RankingData].self) { (response) in
-
-                guard let matchs = response.value else { return }
-
-                completionHandler(matchs)
-                
-            }
-    }
-    
     func fetchLeagueDB(collection: String, completionHandler: @escaping ([URLFromDB]) -> Void) {
 
         var dataFromDB: [URLFromDB] = []
