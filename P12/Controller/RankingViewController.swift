@@ -198,6 +198,9 @@ extension RankingViewController: UICollectionViewDelegate, UICollectionViewDeleg
             selectedGame = games[indexPath.row]
             getLeagueName()
             getLeagues(collection: selectedGame as! String)
+            if let selectedLeague = selectedLeague {
+                leagueLabel.text = "\(selectedLeague)"
+            }
 
         } else {
             leaguesCollectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)

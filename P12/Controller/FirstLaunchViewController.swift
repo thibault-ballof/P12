@@ -28,6 +28,9 @@ class FirstLaunchViewController: UIViewController {
         case 3:
             selectedGames = "lol"
             selectedLeagues = "LFL"
+        case 4:
+            selectedGames = "r6"
+            selectedLeagues = "Europeen League"
             
         default:
             break

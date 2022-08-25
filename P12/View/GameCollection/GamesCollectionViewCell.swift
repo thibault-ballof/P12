@@ -28,17 +28,12 @@ class GamesCollectionViewCell: UICollectionViewCell{
     override class func awakeFromNib() {
     }
 
-    override var isHighlighted: Bool {
+    override var isSelected: Bool{
            didSet {
                if self.isSelected {
-                   print("yes")
                    self.layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1)
-                   self.layer.borderWidth = 1
-                   //view.layer.borderColor = CGColor(red: 255, green: 0, blue: 0, alpha: 1)
-                   //setupcolor(view: view)
-                  // view.layer.borderWidth = 5
+                   self.layer.borderWidth = 1.5
                } else {
-                   print("no")
                    self.layer.borderWidth = 0
                    view.layer.borderColor = nil
                }

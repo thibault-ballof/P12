@@ -15,7 +15,10 @@ class LaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        animationView.contentMode = .scaleAspectFit
+        //hide Back Button
+        self.tabBarController?.navigationItem.hidesBackButton = true
+
+        animationView.contentMode = .scaleAspectFill
         animationView.animationSpeed = 1.0
         animationView.play { (finished) in
             let storyboard = UIStoryboard(name: "Main", bundle: .main)
