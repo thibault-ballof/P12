@@ -55,16 +55,22 @@ class RankingViewController: UIViewController  {
         super.viewDidLoad()
         //getRanking()
         overrideUserInterfaceStyle = .dark
-        getGamesList()
-        getLeagues(collection: selectedGame as! String)
+
+
         //createGameArray()
         leaguesCollectionView.register(UINib.init(nibName: "LeaguesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: leaguesCellIdentifier)
         tableView.register(UINib.init(nibName: "RankingTableViewCell", bundle: nil), forCellReuseIdentifier: rankingCellIdentifier)
         gameCollectionView.register(UINib.init(nibName: "GamesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: gamesCellIdentifier)
         gameCollectionView.showsHorizontalScrollIndicator = false
         leaguesCollectionView.showsHorizontalScrollIndicator = false
+        getGamesList()
         getLeagueName()
+        getLeagues(collection: "")
+        if let url = leaguesFromDB?.first?.url {
+            getRanking(url: url)
+        }
 
+        tableView.reloadData()
         
 
 
@@ -116,7 +122,7 @@ class RankingViewController: UIViewController  {
             self.leaguesCollectionView.reloadData()
 
         }
-        getRanking(url: leaguesFromDB?.first?.url ?? "")
+
         tableView.reloadData()
     }
     
@@ -129,7 +135,7 @@ class RankingViewController: UIViewController  {
     }
 
     func getRanking(url: String) {
-        NetworkCall(url: url, service: .posts, method: .get).executeQuery(){
+       /* NetworkCall(url: url, service: .posts, method: .get).executeQuery(){
             (result: Result<[RankingData],Error>) in
             switch result{
             case .success(let post):
@@ -139,9 +145,14 @@ class RankingViewController: UIViewController  {
             case .failure(let error):
                 print(error)
             }
-        }
+        }*/
+
         tableView.reloadData()
+
+
+
     }
+
 }
 
 extension RankingViewController: UICollectionViewDataSource  {

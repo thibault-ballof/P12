@@ -129,11 +129,11 @@ class ResultViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
-    func fetchMatch() {
-        self.matchsArray = []
-        
-        NetworkCall(url: urls[0], service: .posts, method: .get).executeQuery(){
+    func fecthRunningMatch() {
+        NetworkCall.shared.method = .get
+        NetworkCall.shared.headers = [:]
+        NetworkCall.shared.url = urls[0]
+        NetworkCall.shared.executeQuery(){
             (result: Result<[PandaJSON],Error>) in
             switch result{
             case .success(let post):
@@ -144,7 +144,12 @@ class ResultViewController: UIViewController {
                 print(error)
             }
         }
-        NetworkCall(url: urls[1], service: .posts, method: .get).executeQuery(){
+    }
+    func fecthUpcomingMatch() {
+        NetworkCall.shared.method = .get
+        NetworkCall.shared.headers = [:]
+        NetworkCall.shared.url = urls[1]
+        NetworkCall.shared.executeQuery(){
             (result: Result<[PandaJSON],Error>) in
             switch result{
             case .success(let post):
@@ -155,6 +160,24 @@ class ResultViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    func fetchMatch() {
+        self.matchsArray = []
+        fecthRunningMatch()
+        fecthUpcomingMatch()
+
+     /*   NetworkCall(url: urls[1], service: .posts, method: .get).executeQuery(){
+            (result: Result<[PandaJSON],Error>) in
+            switch result{
+            case .success(let post):
+                self.data = post
+                self.matchsArray.append(Matchs(type: "Match a venir", pandaJSON: post))
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }*/
     }
     
     func createGameArray() {

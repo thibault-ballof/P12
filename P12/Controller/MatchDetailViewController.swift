@@ -53,11 +53,15 @@ class MatchDetailViewController: UIViewController {
         
         setupUi()
         
-        
+      
     }
     
     func setupUi() {
-        NetworkCall(url: "https://api.pandascore.co/matches/" + matchID + "?token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4", service: .posts, method: .get).executeQuery(){
+
+        NetworkCall.shared.method = .get
+        NetworkCall.shared.headers = [:]
+        NetworkCall.shared.url = "https://api.pandascore.co/matches/" + matchID + "?token=gnHS7gmxPbbJ_uzIXUTKQDbOtqH8Z1fr509qur6EB-gvqo3Psh4"
+        NetworkCall.shared.executeQuery(){
             (result: Result<PandaJSON,Error>) in
             switch result{
             case .success(let post):
@@ -67,20 +71,29 @@ class MatchDetailViewController: UIViewController {
                 if let img = post.opponents[1].opponent.image_url {
                     self.oppoImage.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholder.png"))
                 }
-                
+
                 if let img = post.league.image_url {
                     self.leagueImage.sd_setImage(with: URL(string: img), placeholderImage: UIImage(named: "placeholder.png"))
                 }
-                
+
                 self.titleLabel.text = post.league.name
                 self.homeLabel.text = post.opponents[0].opponent.name
                 self.oppoLabel.text = post.opponents[1].opponent.name
                 self.matchTypeLabel.text = "Best Of \(String(describing: post.number_of_games!))"
-                self.resultLabel.text = "\(post.results[0].score!) - \(post.results[1].score!)"    
+                self.resultLabel.text = "\(post.results[0].score!) - \(post.results[1].score!)"
             case .failure(let error):
                 print(error)
             }
         }
+      /*  NetworkCall(url: , service: .posts, method: .get).executeQuery(){
+            (result: Result<PandaJSON,Error>) in
+            switch result{
+            case .success(let post):
+
+            case .failure(let error):
+                print(error)
+            }
+        }*/
         
     }
 }

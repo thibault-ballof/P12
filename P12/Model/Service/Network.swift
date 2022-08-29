@@ -24,10 +24,6 @@ isJSONRequest = set to true by default. if you want to send normal request set i
 */
 class NetworkCall: NSObject {
 
-    private var session = Session(configuration: .default)
-    init(session: Session) {
-        self.session = session
-    }
 
 
     enum services: String{
@@ -39,7 +35,9 @@ class NetworkCall: NSObject {
     var url: String! = "https://google.fr"
     var encoding: ParameterEncoding! = JSONEncoding.default
 
-    init(headers: [String:String] = [:],url :String?,service :services? = nil, method: HTTPMethod = .post, isJSONRequest: Bool = false){
+    static let shared = NetworkCall(url: "https://google.fr")
+
+  private init(headers: [String:String] = [:],url :String?,service :services? = nil, method: HTTPMethod = .post, isJSONRequest: Bool = false){
         super.init()
         headers.forEach({self.headers.add(name: $0.key, value: $0.value)})
         if url == nil, service != nil{
@@ -54,12 +52,17 @@ class NetworkCall: NSObject {
         print("Service: \(service?.rawValue ?? self.url ?? "") \n data: \(parameters)")
     }
 
+    private var session = Session(configuration: .default)
+    init(session: Session) {
+        self.session = session
+    }
+
     func executeQuery<T>(completion: @escaping (Result<T, Error>) -> Void) where T: Codable {
 
         
         //session.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
 
-        AF.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
+        session.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
             switch response.result{
             case .success(let res):
                 if let code = response.response?.statusCode{
@@ -82,4 +85,8 @@ class NetworkCall: NSObject {
         })
     }
 
+
+
+
 }
+
