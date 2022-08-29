@@ -208,6 +208,7 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as! ResultTableViewCell
         
         if matchsArray[indexPath.section].pandaJSON[indexPath.row].opponents.count > 1  {
@@ -250,7 +251,7 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         //view.backgroundColor =  UIColor(red: 1, green: 0.3653766513, blue: 0.1507387459, alpha: 1)
         
-        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 40))
+        let lbl = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 10))
         lbl.font = UIFont.systemFont(ofSize: 10)
         lbl.text = matchsArray[section].type
         view.addSubview(lbl)
