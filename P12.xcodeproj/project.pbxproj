@@ -55,13 +55,13 @@
 		63D341FF285CE7F7003C556C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63D341FD285CE7F7003C556C /* GoogleService-Info.plist */; };
 		63D34200285CE7F7003C556C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 63D341FD285CE7F7003C556C /* GoogleService-Info.plist */; };
 		63DC6D1F28A634C900B01ED3 /* BebasNeue-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63DC6D1E28A634C900B01ED3 /* BebasNeue-Regular.otf */; };
+		63DDDCC228BCC29A00A3ACA8 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 63DDDCC128BCC29A00A3ACA8 /* Lottie */; };
 		63F2509528B3818800A04F52 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 63F2509428B3818800A04F52 /* SDWebImage */; };
 		63F2509828B3821200A04F52 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 63F2509728B3821200A04F52 /* FirebaseAnalytics */; };
 		63F2509A28B3821200A04F52 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 63F2509928B3821200A04F52 /* FirebaseFirestore */; };
 		63F2509C28B3821200A04F52 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 63F2509B28B3821200A04F52 /* FirebaseFirestoreSwift */; };
 		63F2509F28B3824100A04F52 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 63F2509E28B3824100A04F52 /* Alamofire */; };
 		63F68B8028AA4FFE008F7FB0 /* Made Tommy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 63F68B7F28AA4FFE008F7FB0 /* Made Tommy.otf */; };
-		D5FE41F890A7C510020DBDA2 /* libPods-P12.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 220A80297ED01F44595ED0B1 /* libPods-P12.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,8 +82,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		10AD7865C5ECB56844F92651 /* Pods-P12.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-P12.release.xcconfig"; path = "Target Support Files/Pods-P12/Pods-P12.release.xcconfig"; sourceTree = "<group>"; };
-		220A80297ED01F44595ED0B1 /* libPods-P12.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-P12.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		63007B4828AE38D5002FA25E /* MockURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLProtocol.swift; sourceTree = "<group>"; };
 		63007B4B28AE3950002FA25E /* FakeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponse.swift; sourceTree = "<group>"; };
 		63007B4D28AE4652002FA25E /* TestNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestNetwork.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 		63D341FD285CE7F7003C556C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		63DC6D1E28A634C900B01ED3 /* BebasNeue-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue-Regular.otf"; sourceTree = "<group>"; };
 		63F68B7F28AA4FFE008F7FB0 /* Made Tommy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Made Tommy.otf"; sourceTree = "<group>"; };
-		B0D816856A6D6E056618C36A /* Pods-P12.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-P12.debug.xcconfig"; path = "Target Support Files/Pods-P12/Pods-P12.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +145,7 @@
 				63F2509528B3818800A04F52 /* SDWebImage in Frameworks */,
 				63F2509A28B3821200A04F52 /* FirebaseFirestore in Frameworks */,
 				63F2509C28B3821200A04F52 /* FirebaseFirestoreSwift in Frameworks */,
-				D5FE41F890A7C510020DBDA2 /* libPods-P12.a in Frameworks */,
+				63DDDCC228BCC29A00A3ACA8 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -169,14 +166,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2470BE0141912C4503F6604E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				220A80297ED01F44595ED0B1 /* libPods-P12.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		63007B4A28AE3942002FA25E /* JSON */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,7 +194,6 @@
 				63C31E97284DFD660083AD8B /* P12UITests */,
 				63C31E72284DFD650083AD8B /* Products */,
 				6EBD7B9C8B071D991018A405 /* Pods */,
-				2470BE0141912C4503F6604E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -359,8 +347,6 @@
 		6EBD7B9C8B071D991018A405 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B0D816856A6D6E056618C36A /* Pods-P12.debug.xcconfig */,
-				10AD7865C5ECB56844F92651 /* Pods-P12.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -372,7 +358,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 63C31E9E284DFD660083AD8B /* Build configuration list for PBXNativeTarget "P12" */;
 			buildPhases = (
-				4A84F96194B964DC16478DF3 /* [CP] Check Pods Manifest.lock */,
 				63C31E6D284DFD650083AD8B /* Sources */,
 				63C31E6E284DFD650083AD8B /* Frameworks */,
 				63C31E6F284DFD650083AD8B /* Resources */,
@@ -388,6 +373,7 @@
 				63F2509928B3821200A04F52 /* FirebaseFirestore */,
 				63F2509B28B3821200A04F52 /* FirebaseFirestoreSwift */,
 				63F2509E28B3824100A04F52 /* Alamofire */,
+				63DDDCC128BCC29A00A3ACA8 /* Lottie */,
 			);
 			productName = P12;
 			productReference = 63C31E71284DFD650083AD8B /* P12.app */;
@@ -465,6 +451,7 @@
 				63F2509328B3818800A04F52 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				63F2509628B3821200A04F52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				63F2509D28B3824100A04F52 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				63DDDCC028BCC29A00A3ACA8 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 63C31E72284DFD650083AD8B /* Products */;
 			projectDirPath = "";
@@ -519,31 +506,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4A84F96194B964DC16478DF3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-P12-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		63C31E6D284DFD650083AD8B /* Sources */ = {
@@ -748,7 +710,6 @@
 		};
 		63C31E9F284DFD660083AD8B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0D816856A6D6E056618C36A /* Pods-P12.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -777,7 +738,6 @@
 		};
 		63C31EA0284DFD660083AD8B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10AD7865C5ECB56844F92651 /* Pods-P12.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -922,6 +882,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		63DDDCC028BCC29A00A3ACA8 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		63F2509328B3818800A04F52 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
@@ -949,6 +917,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		63DDDCC128BCC29A00A3ACA8 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63DDDCC028BCC29A00A3ACA8 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		63F2509428B3818800A04F52 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 63F2509328B3818800A04F52 /* XCRemoteSwiftPackageReference "SDWebImage" */;

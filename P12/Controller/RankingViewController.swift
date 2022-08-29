@@ -135,6 +135,21 @@ class RankingViewController: UIViewController  {
     }
 
     func getRanking(url: String) {
+        NetworkCall.shared.method = .get
+        NetworkCall.shared.headers = [:]
+        NetworkCall.shared.url = url
+        NetworkCall.shared.executeQuery(){
+            (result: Result<[RankingData],Error>) in
+            switch result{
+            case .success(let post):
+                self.rankingData = post
+                self.leaguesCollectionView.reloadData()
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+
        /* NetworkCall(url: url, service: .posts, method: .get).executeQuery(){
             (result: Result<[RankingData],Error>) in
             switch result{
