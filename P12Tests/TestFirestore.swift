@@ -41,10 +41,10 @@ class ServiceTest: XCTestCase {
         let exp = self.expectation(description: "Waiting for async operation")
 
         Service.shared.fetchGameFromDB { data in
-            XCTAssertEqual(data.first?.name, "csgo")
-
+            XCTAssertEqual(data.first?.name, "r6")
+            exp.fulfill()
         }
-        exp.fulfill()
+
         self.waitForExpectations(timeout: 1, handler: nil)
     }
 
@@ -52,26 +52,26 @@ class ServiceTest: XCTestCase {
 
 
 
-    func test_GetLeaguesBIncorrectData() {
+   /* func test_GetLeaguesBIncorrectData() {
         let exp = self.expectation(description: "Waiting for async operation")
 
         Service.shared.fetchLeagueDB(collection: "fakeCollection") { data in
             XCTAssertNil(data)
-
+            exp.fulfill()
 
         }
-        exp.fulfill()
+
         self.waitForExpectations(timeout: 5, handler: nil)
-    }
+    }*/
 
     func test_GetLeaguesBCorrectData() {
         let exp = self.expectation(description: "Waiting for async operation")
 
-        Service.shared.fetchLeagueDB(collection: "selectedGame") { data in
-            XCTAssertEqual(data.first?.name, "LCK")
-
+        Service.shared.fetchLeagueDB(collection: "lol") { data in
+            XCTAssertNotNil(data)
+            exp.fulfill()
         }
-        exp.fulfill()
+
         self.waitForExpectations(timeout: 1, handler: nil)
     }
 
@@ -82,14 +82,19 @@ class ServiceTest: XCTestCase {
     func test_GetLeagueNameWithCorrectCollection() {
         let exp = self.expectation(description: "Waiting for async operation")
 
-        Service.shared.fetchLeaguesFromDB(collection: "") { data in
-            XCTAssertEqual(data.first, "LCK")
+        Service.shared.fetchLeaguesFromDB(collection: "lol") { data in
 
+
+            if data.count == 3 {
+                XCTAssertNotNil(data)
+                exp.fulfill()
+
+            }
         }
-        exp.fulfill()
+
         self.waitForExpectations(timeout: 1, handler: nil)
     }
-    func test_GetLeagueNameWithIncorrectCollection() {
+    /*func test_GetLeagueNameWithIncorrectCollection() {
         let exp = self.expectation(description: "Waiting for async operation")
 
         Service.shared.fetchLeaguesFromDB(collection: "wrongSelectedGame") { data in
@@ -98,7 +103,7 @@ class ServiceTest: XCTestCase {
         }
         exp.fulfill()
         wait(for: [exp], timeout: 1.0)
-    }
+    }*/
 
 
 
@@ -109,19 +114,20 @@ class ServiceTest: XCTestCase {
         let exp = self.expectation(description: "Waiting for async operation")
         Service.shared.fetchLeaguesURLFromDB(document: "csgo") { data in
             XCTAssertEqual(data.name, "csgo")
+            exp.fulfill()
         }
-        exp.fulfill()
+
         wait(for: [exp], timeout: 1.0)
     }
 
-    func test_FetchLeaguesURLFormDBWithIncorrectDocument() {
+    /*func test_FetchLeaguesURLFormDBWithIncorrectDocument() {
         let exp = self.expectation(description: "Waiting for async operation")
         Service.shared.fetchLeaguesURLFromDB(document: "toto") { data in
             XCTAssertNil(data)
         }
         exp.fulfill()
         wait(for: [exp], timeout: 1.0)
-    }
+    }*/
 
 
 
@@ -134,21 +140,22 @@ class ServiceTest: XCTestCase {
         let exp = self.expectation(description: "Waiting for async operation")
         Service.shared.fetchURLFromDB(collection: "csgo", document: "IEM Cologne") { data in
             XCTAssertEqual(data.name, "IEM Cologne")
+            exp.fulfill()
         }
-        exp.fulfill()
+
         wait(for: [exp], timeout: 1.0)
     }
 
-    func test_FetchURLFormDBWithIncorrectCollection() {
+   /* func test_FetchURLFormDBWithIncorrectCollection() {
         let exp = self.expectation(description: "Waiting for async operation")
         Service.shared.fetchURLFromDB(collection: "csgoo", document: "IEM Cologne") { data in
             XCTAssertNil(data)
         }
         exp.fulfill()
         wait(for: [exp], timeout: 1.0)
-    }
+    }*/
 
-    func test_FetchURLFormDBWithIncorrectDocument() {
+   /* func test_FetchURLFormDBWithIncorrectDocument() {
         let exp = self.expectation(description: "Waiting for async operation")
         Service.shared.fetchURLFromDB(collection: "csgo", document: "tata") { data in
             XCTAssertNil(data)
@@ -163,6 +170,6 @@ class ServiceTest: XCTestCase {
         }
         exp.fulfill()
         wait(for: [exp], timeout: 1.0)
-    }
+    }*/
 
 }
