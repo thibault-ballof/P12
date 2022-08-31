@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Made Tommy.otf">
+            <string>MADETOMMY</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultCell" rowHeight="127" id="KGk-i7-Jjw" customClass="ResultTableViewCell" customModule="P12" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="127"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5kq-Io-ncF">
+                        <rect key="frame" x="246.5" y="57.5" width="99.5" height="18.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="5kq-Io-ncF" secondAttribute="height" multiplier="113:21" id="saa-K4-uzU"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ww5-UN-vH1">
+                        <rect key="frame" x="13" y="38" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="ww5-UN-vH1" secondAttribute="height" multiplier="1:1" id="1k5-Gc-RS3"/>
+                            <constraint firstAttribute="width" constant="50" id="Cbi-He-et4"/>
+                            <constraint firstAttribute="height" constant="50" id="WMq-PK-ZUS"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="03e-rS-kKd">
+                        <rect key="frame" x="354" y="38" width="50" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="54W-de-LJn"/>
+                            <constraint firstAttribute="width" secondItem="03e-rS-kKd" secondAttribute="height" multiplier="1:1" id="jlq-8A-kNf"/>
+                            <constraint firstAttribute="width" constant="50" id="wvh-zX-23T"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fds-Se-h2Y">
+                        <rect key="frame" x="71" y="57.5" width="99.5" height="18.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="fds-Se-h2Y" secondAttribute="height" multiplier="113:21" id="co2-gx-orc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5W-w1-bYs">
+                        <rect key="frame" x="198" y="54.5" width="18.5" height="18.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="a5W-w1-bYs" secondAttribute="height" multiplier="1:1" id="mb6-NN-XIv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19C-Lt-P2Q">
+                        <rect key="frame" x="53" y="9" width="300.5" height="18.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="19C-Lt-P2Q" secondAttribute="height" multiplier="341:21" id="5fX-mv-85l"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xUM-aQ-EsG">
+                        <rect key="frame" x="13" y="7" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="kYk-M8-y1d"/>
+                            <constraint firstAttribute="width" secondItem="xUM-aQ-EsG" secondAttribute="height" multiplier="1:1" id="lKl-tl-aPe"/>
+                            <constraint firstAttribute="height" constant="25" id="vqB-AJ-jFp"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="67o-Rd-bQj">
+                        <rect key="frame" x="129" y="95" width="157" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="67o-Rd-bQj" secondAttribute="height" multiplier="157:21" id="gdH-eE-bw4"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="MADETOMMY" family="MADE TOMMY" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8w-fX-03G" customClass="AnimationView" customModule="Lottie">
+                        <rect key="frame" x="319" y="5" width="85" height="27"/>
+                        <color key="backgroundColor" red="0.1058823466" green="0.109803915" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="27" id="Pmu-o5-H6k"/>
+                            <constraint firstAttribute="width" constant="85" id="bwr-ev-pKv"/>
+                            <constraint firstAttribute="width" secondItem="r8w-fX-03G" secondAttribute="height" multiplier="85:27" id="hpJ-Jj-aAX"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="golive"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="fds-Se-h2Y" firstAttribute="leading" secondItem="ww5-UN-vH1" secondAttribute="trailing" constant="8" id="2G4-TX-scJ"/>
+                    <constraint firstItem="ww5-UN-vH1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="30O-LN-rpy"/>
+                    <constraint firstItem="67o-Rd-bQj" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="42k-sy-tjY"/>
+                    <constraint firstItem="xUM-aQ-EsG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="5z6-GN-8td"/>
+                    <constraint firstAttribute="trailing" secondItem="03e-rS-kKd" secondAttribute="trailing" constant="10" id="6FW-zC-M40"/>
+                    <constraint firstItem="67o-Rd-bQj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="109" id="FBZ-kG-Viw"/>
+                    <constraint firstItem="a5W-w1-bYs" firstAttribute="leading" secondItem="fds-Se-h2Y" secondAttribute="trailing" constant="27.5" id="HbL-Cf-Ybv"/>
+                    <constraint firstItem="xUM-aQ-EsG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="M5S-OE-mRM"/>
+                    <constraint firstItem="67o-Rd-bQj" firstAttribute="top" secondItem="5kq-Io-ncF" secondAttribute="bottom" constant="19" id="NYT-OT-nFb"/>
+                    <constraint firstItem="a5W-w1-bYs" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="PUP-Hi-Akz"/>
+                    <constraint firstItem="03e-rS-kKd" firstAttribute="leading" secondItem="5kq-Io-ncF" secondAttribute="trailing" constant="8" id="YJp-xK-6KU"/>
+                    <constraint firstAttribute="trailing" secondItem="r8w-fX-03G" secondAttribute="trailing" constant="10" id="ZmL-zA-Y1B"/>
+                    <constraint firstItem="19C-Lt-P2Q" firstAttribute="leading" secondItem="xUM-aQ-EsG" secondAttribute="trailing" constant="15" id="abe-o8-6wb"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="67o-Rd-bQj" secondAttribute="trailing" constant="108" id="bAx-ZA-ZUm"/>
+                    <constraint firstItem="67o-Rd-bQj" firstAttribute="top" secondItem="fds-Se-h2Y" secondAttribute="bottom" constant="19" id="cci-Ti-6Ys"/>
+                    <constraint firstItem="ww5-UN-vH1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="38" id="dd4-kg-U5K"/>
+                    <constraint firstItem="03e-rS-kKd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="38" id="jsG-wR-Hu9"/>
+                    <constraint firstItem="5kq-Io-ncF" firstAttribute="leading" secondItem="a5W-w1-bYs" secondAttribute="trailing" constant="30" id="nH1-Kp-B8F"/>
+                    <constraint firstItem="a5W-w1-bYs" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="tiq-jr-0BR"/>
+                    <constraint firstItem="r8w-fX-03G" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="vyN-PX-prX"/>
+                    <constraint firstItem="19C-Lt-P2Q" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="zDT-SR-MMj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" red="0.1058823466" green="0.109803915" blue="0.12549020350000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <connections>
+                <outlet property="animationView" destination="r8w-fX-03G" id="uyX-Zr-i3X"/>
+                <outlet property="dateLabel" destination="67o-Rd-bQj" id="Xr9-PQ-lA9"/>
+                <outlet property="homeImage" destination="ww5-UN-vH1" id="xbP-ay-2OT"/>
+                <outlet property="leagueImage" destination="xUM-aQ-EsG" id="f2K-r4-qbW"/>
+                <outlet property="leagueLabel" destination="19C-Lt-P2Q" id="Z2O-sR-830"/>
+                <outlet property="t1Label" destination="5kq-Io-ncF" id="iGf-Mr-1dR"/>
+                <outlet property="t2Label" destination="fds-Se-h2Y" id="4BG-6s-yW5"/>
+                <outlet property="visitorImage" destination="03e-rS-kKd" id="fIo-WC-dF8"/>
+            </connections>
+            <point key="canvasLocation" x="160.86956521739131" y="74.665178571428569"/>
+        </tableViewCell>
+    </objects>
+</document>

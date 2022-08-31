@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SDWebImage
 
 class RankingViewController: UIViewController  {
     
@@ -14,148 +15,259 @@ class RankingViewController: UIViewController  {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var gameCollectionView: UICollectionView!
     @IBOutlet weak var leaguesCollectionView: UICollectionView!
-    
+    @IBOutlet weak var leagueLabel: UILabel!
+
     
     //MARK: - Properties
     private let gamesCellIdentifier = "GamesCell"
     private let leaguesCellIdentifier = "LeaguesCell"
     private let rankingCellIdentifier = "RankingCell"
-    private var selectedGame = "lol"
-    private var selectedLeague = "LFL"
-    private let games = ["lol", "CSGO", "OW", "R6", "Valorant"]
-    private var slug = ""
+    private var selectedGame = UserDefaults.standard.object(forKey: "favoriteGames")
+    private var selectedLeague = UserDefaults.standard.object(forKey: "favoriteLeagues")
+    private var games: [String] = []
     private var leagues: [String] = []
     private var rankingCount = 0
+    private var imgURL: [String] = []
     private var rankingData = [RankingData]()
     private let db = Firestore.firestore()
     private var documentData: [[String : Any]] = [[:]]
     private var dataFromDB: URLFromDB?
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
+    private var leaguesFromDB: [URLFromDB]?
+
+    /*  private let item: CustomTabItem
+
+     init(item: CustomTabItem) {
+     self.item = item
+     super.init(nibName: nil, bundle: nil)
+     }
+
+     required init?(coder: NSCoder) {
+     fatalError("init(coder:) has not been implemented")
+     }
+
+     override func viewDidLayoutSubviews() {
+     super.viewDidLayoutSubviews()
+
+     }*/
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //getRanking()
+        overrideUserInterfaceStyle = .dark
+
+
+        //createGameArray()
         leaguesCollectionView.register(UINib.init(nibName: "LeaguesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: leaguesCellIdentifier)
         tableView.register(UINib.init(nibName: "RankingTableViewCell", bundle: nil), forCellReuseIdentifier: rankingCellIdentifier)
+        gameCollectionView.register(UINib.init(nibName: "GamesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: gamesCellIdentifier)
         gameCollectionView.showsHorizontalScrollIndicator = false
         leaguesCollectionView.showsHorizontalScrollIndicator = false
+        getGamesList()
         getLeagueName()
-        getLeagueURL()
+        getLeagues(collection: "")
+        if let url = leaguesFromDB?.first?.url {
+            getRanking(url: url)
+        }
+
+        tableView.reloadData()
+        
+
+
+
+
+        if let selectedLeague = selectedLeague {
+            leagueLabel.text = "\(selectedLeague)"
+        }
+
+
         //leagues = ["LFL", "LEC", "LCS"]
         //db.collection("leagues")
-        
+
         
     }
+
+
+
+
+
+
+    func getGamesList() {
+        self.games = [String]()
+
+        Service.shared.fetchGameFromDB { data in
+
+            for i in 1...data.count {
+
+                self.games.append(data[i-1].name)
+
+            }
+           // DispatchQueue.main.async {
+            self.createGameArray()
+            self.gameCollectionView.reloadData()
+           //}
+        }
+    }
+    func createGameArray() {
+        for i in 1..<games.count {
+            if selectedGame as! String == games[i-1] {
+                games.remove(at: i-1)
+            }
+        }
+        games.insert(UserDefaults.standard.object(forKey: "favoriteGames") as! String, at: 0)
+    }
+
+    func getLeagues(collection: String) {
+        Service.shared.fetchLeagueDB(collection: selectedGame as! String) { data in
+
+            self.leaguesFromDB = data
+           // DispatchQueue.main.async {
+            self.leaguesCollectionView.reloadData()
+           // }
+        }
+
+        tableView.reloadData()
+    }
+    
+
     func getLeagueName() {
-        Service.shared.fetchLeaguesFromDB(collection: selectedGame) { data in
+        Service.shared.fetchLeaguesFromDB(collection: selectedGame as! String) { data in
             self.leagues = data
+           // DispatchQueue.main.async {
             self.leaguesCollectionView.reloadData()
+          //  }
         }
     }
+
     func getRanking(url: String) {
-        Service.shared.fetchRanking(url: url) { ranking in
-            self.rankingData = ranking!
-            self.leaguesCollectionView.reloadData()
-            self.tableView.reloadData()
-            
+        NetworkCall.shared.method = .get
+        NetworkCall.shared.headers = [:]
+        NetworkCall.shared.url = url
+        NetworkCall.shared.executeQuery(){
+            (result: Result<[RankingData],Error>) in
+            switch result{
+            case .success(let post):
+                self.rankingData = post
+                self.leaguesCollectionView.reloadData()
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
         }
+
+       /* NetworkCall(url: url, service: .posts, method: .get).executeQuery(){
+            (result: Result<[RankingData],Error>) in
+            switch result{
+            case .success(let post):
+                self.rankingData = post
+                self.leaguesCollectionView.reloadData()
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }*/
+
+        tableView.reloadData()
+
+
+
     }
-    
-    func getLeagueURL() {
-        Service.shared.fetchURLFromDB(collection: selectedGame, document: selectedLeague) { data in
-            self.dataFromDB = data
-            self.getRanking(url: self.dataFromDB!.url)
-        }
-    }
+
 }
-extension RankingViewController: UICollectionViewDataSource {
-    
-    
+
+extension RankingViewController: UICollectionViewDataSource  {
+
+
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
         if collectionView == self.gameCollectionView {
             let gameCell =  gameCollectionView.dequeueReusableCell(withReuseIdentifier: gamesCellIdentifier, for: indexPath) as! GamesCollectionViewCell
-            gameCell.Label.text = games[indexPath.row]
             gameCell.gameImage.image = UIImage(named: "\(games[indexPath.row])")
-            
             return gameCell
         } else {
-            
-            let leagueCell = leaguesCollectionView.dequeueReusableCell(withReuseIdentifier: leaguesCellIdentifier, for: indexPath) as! LeaguesCollectionViewCell
-            leagueCell.label.text = leagues[indexPath.row]
-            /*Service.shared.fetchLeagues(game: games[indexPath.row]) { leagues in
-                leagueCell.label.text = self.dataFromDB?.name
-            }*/
-            Service.shared.fetchImage(url: dataFromDB!.imgurl, image: leagueCell.leagueImage)
 
-            
+            let leagueCell = leaguesCollectionView.dequeueReusableCell(withReuseIdentifier: leaguesCellIdentifier, for: indexPath) as! LeaguesCollectionViewCell
+            leagueCell.leagueImage.sd_setImage(with: URL(string: leaguesFromDB![indexPath.row].imgurl!), placeholderImage: UIImage(named: "placeholder.png"))
+
             return leagueCell
-            
+
         }
     }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.gameCollectionView {
             return games.count
         }
-        return leagues.count
-        
+        return leaguesFromDB?.count ?? 0
+
     }
-    
-    
+
+
 }
-extension RankingViewController: UICollectionViewDelegate {
+
+extension RankingViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+
+    // Distance Between Item Cells
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 30
+    }
+
+    // Cell Margin
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // gameCollectionView.deselectItem(at: indexPath as IndexPath, animated: true)
+        // gameCollectionView.deselectItem(at: indexPath as IndexPath, animated: true)
         if collectionView == self.gameCollectionView {
             gameCollectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)
             selectedGame = games[indexPath.row]
             getLeagueName()
+            getLeagues(collection: selectedGame as! String)
+            if let selectedLeague = selectedLeague {
+                leagueLabel.text = "\(selectedLeague)"
+            }
 
         } else {
             leaguesCollectionView.selectItem(at: indexPath as IndexPath, animated: true, scrollPosition: .right)
-            selectedLeague = leagues[indexPath.row]
-            getLeagueURL()
-        }
-
-
-       
-        
-       /* db.collection("leagues").getDocuments { snapchot, error in
-            if error == nil {
-                for document in snapchot!.documents {
-                    self.documentData = document.data()
-                    
-                    print(self.documentData.count)
-                }
+            selectedLeague = leaguesFromDB![indexPath.row].name
+            if let selectedLeague = selectedLeague {
+                leagueLabel.text = "\(selectedLeague)"
             }
-        } */
-        leaguesCollectionView.reloadData()
+
+            self.getRanking(url: self.leaguesFromDB![indexPath.row].url ?? "")
+
+        }
     }
 }
 
-extension RankingViewController: UITableViewDataSource, UITableViewDelegate{
+extension RankingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rankingData.count
     }
-    
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: rankingCellIdentifier, for: indexPath) as! RankingTableViewCell
         cell.teamLabel.text = rankingData[indexPath.row].team.name
         cell.rankLabel.text = "\(rankingData[indexPath.row].rank)"
-        cell.scoreLabel.text = "\(rankingData[indexPath.row].wins)" + " - " + "\(rankingData[indexPath.row].losses)"
-        Service.shared.fetchImage(url: rankingData[indexPath.row].team.imageURL, image: cell.teamImage!)
+        cell.scoreLabel.text = "\(rankingData[indexPath.row].wins ?? 0)" + " - " + "\(rankingData[indexPath.row].losses ?? 0)"
+        
+        cell.teamImage.sd_setImage(with: URL(string: rankingData[indexPath.row].team.imageURL), placeholderImage: UIImage(named: "placeholder.png"))
+
         return cell
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 }
+
+
+

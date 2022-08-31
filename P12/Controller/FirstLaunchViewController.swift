@@ -6,13 +6,11 @@
 //
 
 import UIKit
-enum Games {
-    case lol, csgo, ow
-}
 
 
 class FirstLaunchViewController: UIViewController {
-    var selectedGames: [String] = []
+    var selectedGames: String = ""
+    var selectedLeagues: String = ""
     
     @IBOutlet var gamebuttons: [UIButton]!
     
@@ -20,62 +18,34 @@ class FirstLaunchViewController: UIViewController {
     @IBAction func addingGameToFavorite(_ sender: UIButton) {
         switch sender.tag {
         case 1:
-            if selectedGames.contains("r6-siege") == false {
-                selectedGames.append("r6-siege")
-            }
+            selectedGames = "csgo"
+            selectedLeagues = "IEM Cologne"
             
         case 2:
-            if selectedGames.contains("dota-2") == false {
-                selectedGames.append("dota-2")
-            }
-           
+            selectedGames = "ow"
+            selectedLeagues = "OW League"
+            
         case 3:
-            if selectedGames.contains("league-of-legends") == false {
-                selectedGames.append("league-of-legends")
-            }
+            selectedGames = "lol"
+            selectedLeagues = "LFL"
+        case 4:
+            selectedGames = "r6"
+            selectedLeagues = "Europeen League"
             
         default:
             break
         }
-        print(selectedGames)
+        UserDefaults.standard.set(selectedGames, forKey: "favoriteGames")
+        UserDefaults.standard.set(selectedLeagues, forKey: "favoriteLeagues")
+        self.performSegue(withIdentifier: "segueIdentifier", sender: self)
+        UserDefaults.standard.set(true, forKey: "alreadyLaunched")
     }
     
-    @IBAction func button(_ sender: Any) {
-        
-        UserDefaults.standard.set(selectedGames, forKey: "favoriteGames")
-        self.performSegue(withIdentifier: "segueIdentifier", sender: self)
-        
-        UserDefaults.standard.set(true, forKey: "alreadyLaunched")
-        
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .dark  
         // Do any additional setup after loading the view.
     }
     
-    func appendFavoriteGames() {
-        let selectedGames: Games = .lol
-
-        switch selectedGames {
-        case .lol:
-            print("")
-        case .csgo:
-            print("")
-        case .ow:
-            print("")
-        }
-    }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
