@@ -102,9 +102,10 @@ class RankingViewController: UIViewController  {
                 self.games.append(data[i-1].name)
 
             }
+           // DispatchQueue.main.async {
             self.createGameArray()
             self.gameCollectionView.reloadData()
-            
+           //}
         }
     }
     func createGameArray() {
@@ -118,9 +119,11 @@ class RankingViewController: UIViewController  {
 
     func getLeagues(collection: String) {
         Service.shared.fetchLeagueDB(collection: selectedGame as! String) { data in
-            self.leaguesFromDB = data
-            self.leaguesCollectionView.reloadData()
 
+            self.leaguesFromDB = data
+           // DispatchQueue.main.async {
+            self.leaguesCollectionView.reloadData()
+           // }
         }
 
         tableView.reloadData()
@@ -130,7 +133,9 @@ class RankingViewController: UIViewController  {
     func getLeagueName() {
         Service.shared.fetchLeaguesFromDB(collection: selectedGame as! String) { data in
             self.leagues = data
+           // DispatchQueue.main.async {
             self.leaguesCollectionView.reloadData()
+          //  }
         }
     }
 

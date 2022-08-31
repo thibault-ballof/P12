@@ -18,16 +18,18 @@ class Service {
     private let db = Firestore.firestore()
 
 
+
     private var leagues: [String] = []
     var matchData: [PandaJSON]!
     var gameObject: [GamesObject] = []
     var gameURL: [String] = []
     var games: [String] = []
 
-
+//MARK: Get all the league for a game form Firestore
     func fetchLeagueDB(collection: String, completionHandler: @escaping ([URLFromDB]) -> Void) {
 
         var dataFromDB: [URLFromDB] = []
+
         db.collection(collection).getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error: \(err)")
@@ -57,7 +59,10 @@ class Service {
         }
 
     }
+
+    //MARK: Get League URL form Firestore
     func fetchLeaguesURLFromDB(document: String, completionHandler: @escaping (GamesObject) -> Void) {
+
         var gamesObject: GamesObject?
         let docRef = db.collection("games").document(document)
         docRef.getDocument { document, error in
@@ -72,7 +77,10 @@ class Service {
             }
         }
     }
+
+    //MARK: Get League from Firestore
     func fetchURLFromDB(collection: String, document: String, completionHandler: @escaping (URLFromDB) -> Void) {
+
         var dataFromDB: URLFromDB?
         let docRef = db.collection(collection).document(document)
         docRef.getDocument { document, error in
@@ -86,7 +94,11 @@ class Service {
             }
         }
     }
+
+    //MARK: Get all Games & league from Firestore
     func fetchGameFromDB(completionHandler: @escaping ([GamesObject]) -> Void) {
+        //settings.dispatchQueue = DispatchQueue(label: "com.test.my-thread")
+        //db.settings = settings
         db.collection("games").getDocuments { (querySnapshot, err) in
             if let err = err {
                 print("Error: \(err)")
@@ -114,6 +126,7 @@ class Service {
         }
     }
 
+    //MARK: Get all leagues from a game 
     func fetchLeaguesFromDB(collection: String, completionHandler: @escaping ([String]) -> Void) {
         db.collection(collection).getDocuments { (querySnapshot, err) in
             if let err = err {

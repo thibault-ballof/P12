@@ -12,13 +12,13 @@ class FakeResponseData {
     //MARK: - Data
     static var goodData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
-        let url = bundle.url(forResource: "Recipe", withExtension: ".json")!
+        let url = bundle.url(forResource: "goodjson", withExtension: ".json")!
         return try! Data(contentsOf: url)
     }
 
     static var noData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
-        let url = bundle.url(forResource: "BadRecipe", withExtension: ".json")!
+        let url = bundle.url(forResource: "badjson", withExtension: ".json")!
         return try! Data(contentsOf: url)
     }
 

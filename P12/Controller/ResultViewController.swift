@@ -41,26 +41,7 @@ class ResultViewController: UIViewController {
     private var matchURL = ""
     private var embedURL = ""
     
-    /*  private let item: CustomTabItem?
-     convenience init() {
-     self.init(item: nil)
-     }
-     
-     init(item: CustomTabItem?) {
-     self.item = item!
-     super.init(nibName: nil, bundle: nil)
-     }
-     
-     required init?(coder: NSCoder) {
-     item = CustomTabItem(rawValue: "")
-     super.init(coder: coder)
-     }*/
-    
-    
-    
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
@@ -113,10 +94,9 @@ class ResultViewController: UIViewController {
                 self.gamesList.append(data[i-1].name)
 
             }
-
-            
-            
+           // DispatchQueue.main.async {
             self.collectionView.reloadData()
+           // }
         }
     }
     func getGamesResultURL(){
@@ -126,7 +106,9 @@ class ResultViewController: UIViewController {
             self.urls.append(data.urlUpcoming)
 
             self.fetchMatch()
+            //DispatchQueue.main.async {
             self.tableView.reloadData()
+            //}
         }
     }
     func fecthRunningMatch() {
@@ -166,18 +148,6 @@ class ResultViewController: UIViewController {
         self.matchsArray = []
         fecthRunningMatch()
         fecthUpcomingMatch()
-
-     /*   NetworkCall(url: urls[1], service: .posts, method: .get).executeQuery(){
-            (result: Result<[PandaJSON],Error>) in
-            switch result{
-            case .success(let post):
-                self.data = post
-                self.matchsArray.append(Matchs(type: "Match a venir", pandaJSON: post))
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
-        }*/
     }
     
     func createGameArray() {
