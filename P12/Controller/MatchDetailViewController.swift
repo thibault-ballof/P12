@@ -11,6 +11,7 @@ import Lottie
 
 class MatchDetailViewController: UIViewController {
     
+    //MARK: OUTLETS
     @IBOutlet weak var animationView: AnimationView!
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -24,7 +25,7 @@ class MatchDetailViewController: UIViewController {
     @IBOutlet weak var oppoImage: UIImageView!
     @IBOutlet weak var oppoLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
-    
+    //MARK: PROPERTIES
     var matchID = ""
     var embedURL = ""
     override func viewDidLoad() {
@@ -55,7 +56,7 @@ class MatchDetailViewController: UIViewController {
         
       
     }
-    
+    //MARK: Make API call and set up UI
     func setupUi() {
 
         NetworkCall.shared.method = .get
@@ -85,15 +86,7 @@ class MatchDetailViewController: UIViewController {
                 print(error)
             }
         }
-      /*  NetworkCall(url: , service: .posts, method: .get).executeQuery(){
-            (result: Result<PandaJSON,Error>) in
-            switch result{
-            case .success(let post):
 
-            case .failure(let error):
-                print(error)
-            }
-        }*/
         
     }
 }

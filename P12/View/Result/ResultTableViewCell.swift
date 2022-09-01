@@ -10,6 +10,7 @@ import Lottie
 
 class ResultTableViewCell: UITableViewCell {
 
+    //MARK: OUTLETS
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var leagueImage: UIImageView!
@@ -23,31 +24,22 @@ class ResultTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-
+        //Setup Animation from Lottie
         animationView.contentMode = .scaleAspectFit
-
-          // 2. Set animation loop mode
-
           animationView.loopMode = .loop
-
-          // 3. Adjust animation speed
-
         animationView.animationSpeed = 1.0
-
-          // 4. Play animation
-          animationView.play()
+        animationView.play()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+
     }
 
+    // MARK: Setup UI for cells
     override func layoutSubviews() {
         super.layoutSubviews()
-        // Setup UI for Cell
         contentView.layer.cornerRadius = 5.0
         contentView.layer.masksToBounds = true
         // Set masks to bounds to false to avoid the shadow

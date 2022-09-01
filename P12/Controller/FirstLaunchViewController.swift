@@ -9,12 +9,13 @@ import UIKit
 
 
 class FirstLaunchViewController: UIViewController {
+    //MARK: Properties
     var selectedGames: String = ""
     var selectedLeagues: String = ""
-    
+    //MARK: OUTLETS
     @IBOutlet var gamebuttons: [UIButton]!
     
-    
+    //MARK: Set UserDefault with favorite selected games
     @IBAction func addingGameToFavorite(_ sender: UIButton) {
         switch sender.tag {
         case 1:

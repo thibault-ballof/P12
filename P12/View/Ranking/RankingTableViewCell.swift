@@ -24,6 +24,8 @@ class RankingTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
+
+    // MARK: Setup UI for cells
     override func layoutSubviews() {
         super.layoutSubviews()
         // Setup UI for Cell
@@ -41,6 +43,7 @@ class RankingTableViewCell: UITableViewCell {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 5)
     }
+    
     override var frame: CGRect {
         get {
             return super.frame

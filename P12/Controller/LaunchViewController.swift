@@ -9,8 +9,9 @@ import UIKit
 import Lottie
 
 class LaunchViewController: UIViewController {
-    var window: UIWindow?
     
+
+    //MARK: OUTLETS
     @IBOutlet weak var animationView: AnimationView!
     
     override func viewDidLoad() {

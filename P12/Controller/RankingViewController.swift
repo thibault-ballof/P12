@@ -34,33 +34,20 @@ class RankingViewController: UIViewController  {
     private var dataFromDB: URLFromDB?
     private var leaguesFromDB: [URLFromDB]?
 
-    /*  private let item: CustomTabItem
 
-     init(item: CustomTabItem) {
-     self.item = item
-     super.init(nibName: nil, bundle: nil)
-     }
-
-     required init?(coder: NSCoder) {
-     fatalError("init(coder:) has not been implemented")
-     }
-
-     override func viewDidLayoutSubviews() {
-     super.viewDidLayoutSubviews()
-
-     }*/
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //getRanking()
+
         overrideUserInterfaceStyle = .dark
 
 
-        //createGameArray()
+        // Set up XIB
         leaguesCollectionView.register(UINib.init(nibName: "LeaguesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: leaguesCellIdentifier)
         tableView.register(UINib.init(nibName: "RankingTableViewCell", bundle: nil), forCellReuseIdentifier: rankingCellIdentifier)
         gameCollectionView.register(UINib.init(nibName: "GamesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: gamesCellIdentifier)
+
+
         gameCollectionView.showsHorizontalScrollIndicator = false
         leaguesCollectionView.showsHorizontalScrollIndicator = false
         getGamesList()
@@ -69,29 +56,18 @@ class RankingViewController: UIViewController  {
         if let url = leaguesFromDB?.first?.url {
             getRanking(url: url)
         }
-
         tableView.reloadData()
-        
-
-
-
-
         if let selectedLeague = selectedLeague {
             leagueLabel.text = "\(selectedLeague)"
         }
-
-
-        //leagues = ["LFL", "LEC", "LCS"]
-        //db.collection("leagues")
-
-        
     }
 
 
 
 
 
-
+    //MARK: Fetch Game
+    /// Get game List & game name
     func getGamesList() {
         self.games = [String]()
 
@@ -102,12 +78,12 @@ class RankingViewController: UIViewController  {
                 self.games.append(data[i-1].name)
 
             }
-           // DispatchQueue.main.async {
             self.createGameArray()
             self.gameCollectionView.reloadData()
-           //}
+
         }
     }
+    //MARK: Set on 1rst position of collection user's favorite game
     func createGameArray() {
         for i in 1..<games.count {
             if selectedGame as! String == games[i-1] {
@@ -117,6 +93,7 @@ class RankingViewController: UIViewController  {
         games.insert(UserDefaults.standard.object(forKey: "favoriteGames") as! String, at: 0)
     }
 
+    //MARK: Get leagues for selected game
     func getLeagues(collection: String) {
         Service.shared.fetchLeagueDB(collection: selectedGame as! String) { data in
 
@@ -129,7 +106,7 @@ class RankingViewController: UIViewController  {
         tableView.reloadData()
     }
     
-
+//MARK: Get leagues name for selected game
     func getLeagueName() {
         Service.shared.fetchLeaguesFromDB(collection: selectedGame as! String) { data in
             self.leagues = data
@@ -138,7 +115,7 @@ class RankingViewController: UIViewController  {
           //  }
         }
     }
-
+    //MARK: Fetch Ranking
     func getRanking(url: String) {
         NetworkCall.shared.method = .get
         NetworkCall.shared.headers = [:]
@@ -155,21 +132,7 @@ class RankingViewController: UIViewController  {
             }
         }
 
-       /* NetworkCall(url: url, service: .posts, method: .get).executeQuery(){
-            (result: Result<[RankingData],Error>) in
-            switch result{
-            case .success(let post):
-                self.rankingData = post
-                self.leaguesCollectionView.reloadData()
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(error)
-            }
-        }*/
-
         tableView.reloadData()
-
-
 
     }
 
@@ -178,7 +141,7 @@ class RankingViewController: UIViewController  {
 extension RankingViewController: UICollectionViewDataSource  {
 
 
-
+//MARK: Set up CollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         if collectionView == self.gameCollectionView {
@@ -254,6 +217,7 @@ extension RankingViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
+    //MARK: Set up cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: rankingCellIdentifier, for: indexPath) as! RankingTableViewCell
         cell.teamLabel.text = rankingData[indexPath.row].team.name

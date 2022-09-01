@@ -14,7 +14,7 @@ import SwiftUI
 
 
 class ResultViewController: UIViewController {
-    
+    //MARK: OUTLETS
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -44,27 +44,28 @@ class ResultViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Set dark mode
         overrideUserInterfaceStyle = .dark
-        //createGameArray()
+        //Delegate
         tableView.dataSource = self
         tableView.delegate = self
-        
-        tableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultCell")
         collectionView.delegate = self
         collectionView.dataSource = self
+        //Set up XIB
+        tableView.register(UINib.init(nibName: "ResultTableViewCell", bundle: nil), forCellReuseIdentifier: "ResultCell")
         collectionView.register(UINib.init(nibName: "GamesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: gamesCellIdentifier)
+
+
         collectionView.reloadData()
         collectionView.showsHorizontalScrollIndicator = false
-        
-        
-        
-        
         
     }
     override func viewWillAppear(_ animated: Bool) {
         getGamesList()
         getGamesResultURL()
+
     }
+    //MARK: Send data to MatchDetailVC
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "PassMatchData" {
             let sucessVC = segue.destination as? MatchDetailViewController
@@ -72,6 +73,8 @@ class ResultViewController: UIViewController {
             sucessVC?.embedURL = embedURL
         }
     }
+
+    //MARK: Format date to Day Month & hours
     func showDate(dateFormJSON: String, label: UILabel) {
         let dateFormatterGet = DateFormatter()
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
@@ -80,8 +83,11 @@ class ResultViewController: UIViewController {
         dateFormatterPrint.dateFormat = "d MMM, h:mm"
         guard let dates = dateFormatterGet.date(from: dateFormJSON) else { return }
         label.text = dateFormatterPrint.string(from: dates)
-        
+
     }
+
+    //MARK: Fetch Game
+    /// Get game List & game name
     func getGamesList() {
         
         self.gamesList = [String]()
@@ -95,10 +101,12 @@ class ResultViewController: UIViewController {
 
             }
            // DispatchQueue.main.async {
+            self.createGameArray()
             self.collectionView.reloadData()
            // }
         }
     }
+    //MARK: get Leagues API Url from Firestore
     func getGamesResultURL(){
         self.urls = [String]()
         Service.shared.fetchLeaguesURLFromDB(document: selectedGame) { data in
@@ -111,6 +119,7 @@ class ResultViewController: UIViewController {
             //}
         }
     }
+    //MARK: - Fetch Running Matchs
     func fecthRunningMatch() {
         NetworkCall.shared.method = .get
         NetworkCall.shared.headers = [:]
@@ -127,6 +136,7 @@ class ResultViewController: UIViewController {
             }
         }
     }
+    //MARK: Fetch upcoming matchs
     func fecthUpcomingMatch() {
         NetworkCall.shared.method = .get
         NetworkCall.shared.headers = [:]
@@ -143,21 +153,21 @@ class ResultViewController: UIViewController {
             }
         }
     }
-    
-    func fetchMatch() {
+    //MARK: Fetch Match
+ private func fetchMatch() {
         self.matchsArray = []
         fecthRunningMatch()
         fecthUpcomingMatch()
     }
-    
-    func createGameArray() {
+    //MARK: Set on 1rst position of collection user's favorite game
+   private func createGameArray() {
         
         for i in 1..<games.count {
             if selectedGame == games[i-1].name {
                 games.remove(at: i-1)
             }
         }
-        //games.insert(UserDefaults.standard.object(forKey: "favoriteGames") as! String, at: 0)
+       //games.insert(UserDefaults.standard.object(forKey: "favoriteGames"), at: 0)
         collectionView.reloadData()
     }
     
@@ -176,7 +186,7 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
         
         matchsArray.count
     }
-    
+    // Set up Cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResultCell", for: indexPath) as! ResultTableViewCell
@@ -210,13 +220,13 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
             //"\(String(describing: matchsArray[indexPath.section].pandaJSON[indexPath.row].games[indexPath.row].match_id!))"
             embedURL = matchsArray[indexPath.section].pandaJSON[indexPath.row].live_embed_url ?? ""
         }
-
+        // Send data to other VC
         performSegue(withIdentifier: "PassMatchData", sender: self)
         } else {
             presentAlert(withTitle: "Match pas commencé", message: "Vous devez attendre que le match demarre.")
         }
     }
-    
+    // Set up UI between sections
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
         //view.backgroundColor =  UIColor(red: 1, green: 0.3653766513, blue: 0.1507387459, alpha: 1)

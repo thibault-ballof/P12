@@ -60,7 +60,7 @@ class NetworkCall: NSObject {
     func executeQuery<T>(completion: @escaping (Result<T, Error>) -> Void) where T: Codable {
 
         
-        //session.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
+
 
         session.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
             switch response.result{
@@ -84,9 +84,5 @@ class NetworkCall: NSObject {
             }
         })
     }
-
-
-
-
 }
 

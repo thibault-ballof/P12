@@ -25,7 +25,7 @@ class Service {
     var gameURL: [String] = []
     var games: [String] = []
 
-//MARK: Get all the league for a game form Firestore
+    //MARK: Get all the league for a game form Firestore
     func fetchLeagueDB(collection: String, completionHandler: @escaping ([URLFromDB]) -> Void) {
 
         var dataFromDB: [URLFromDB] = []
@@ -126,7 +126,7 @@ class Service {
         }
     }
 
-    //MARK: Get all leagues from a game 
+    //MARK: Get all leagues from a game
     func fetchLeaguesFromDB(collection: String, completionHandler: @escaping ([String]) -> Void) {
         db.collection(collection).getDocuments { (querySnapshot, err) in
             if let err = err {
@@ -144,15 +144,8 @@ class Service {
                         }
                     }
                 }
-
-
-
-
                 )}
         }
 
     }
-
-
-
 }
