@@ -130,7 +130,10 @@ class ResultViewController: UIViewController {
             case .success(let post):
                 self.data = post
                 self.matchsArray.append(Matchs(type: "Matchs en cours", pandaJSON: post))
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+
             case .failure(let error):
                 print(error)
             }
@@ -147,7 +150,10 @@ class ResultViewController: UIViewController {
             case .success(let post):
                 self.data = post
                 self.matchsArray.append(Matchs(type: "Match a venir", pandaJSON: post))
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+
             case .failure(let error):
                 print(error)
             }

@@ -133,14 +133,17 @@ class RankingViewController: UIViewController  {
             switch result{
             case .success(let post):
                 self.rankingData = post
-                self.leaguesCollectionView.reloadData()
-                self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.leaguesCollectionView.reloadData()
+                    self.tableView.reloadData()
+                }
+
             case .failure(let error):
                 print(error)
             }
         }
 
-        tableView.reloadData()
+        //tableView.reloadData()
 
     }
 

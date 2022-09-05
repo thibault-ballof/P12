@@ -58,8 +58,9 @@ class TestNetwork: XCTestCase {
                 XCTAssertEqual(error.localizedDescription, "Response could not be serialized, input data was nil or zero length.")
 
             }
-            expectation.fulfill()
+
         }
+        expectation.fulfill()
         wait(for: [expectation], timeout: 10.0)
     }
 

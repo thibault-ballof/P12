@@ -58,13 +58,15 @@ class NetworkCall: NSObject {
     }
 
     func executeQuery<T>(completion: @escaping (Result<T, Error>) -> Void) where T: Codable {
-
+        let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
         
+        let request = session.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers)
 
-
-        session.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler: {response in
+        //session.request(url,method: method, parameters: parameters, encoding: encoding, headers: headers).responseData (completionHandler:
+        request.response(queue: queue) { response in
             switch response.result{
             case .success(let res):
+                guard let res = res else {return}
                 if let code = response.response?.statusCode{
                     switch code {
                     case 200...299:
@@ -82,7 +84,7 @@ class NetworkCall: NSObject {
             case .failure(let error):
                 completion(.failure(error))
             }
-        })
+        }
     }
 }
 
