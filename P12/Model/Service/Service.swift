@@ -46,7 +46,7 @@ class Service {
                                 let imgURL = data?["imgurl"] as? String ?? ""
                                 dataFromDB.append(URLFromDB(name: name, url: url, imgurl: imgURL))
                                 if dataFromDB.count == querySnapshot?.count  {
-
+                                    print("ici je debug: \(dataFromDB)")
                                     completionHandler(dataFromDB)
                                 }
                             }

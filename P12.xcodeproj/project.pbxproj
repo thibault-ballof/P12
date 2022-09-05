@@ -14,6 +14,14 @@
 		63007B5228AE6CCD002FA25E /* goodjson.json in Resources */ = {isa = PBXBuildFile; fileRef = 63007B5128AE6CCD002FA25E /* goodjson.json */; };
 		631795D228BCFAD900C93249 /* TestFirestore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 631795D128BCFAD900C93249 /* TestFirestore.swift */; };
 		6318325B28894F6C00111D7A /* GamesObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6318325A28894F6C00111D7A /* GamesObject.swift */; };
+		6319F8A428C5DF3800DCBE61 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6319F8A328C5DF3800DCBE61 /* FirebaseAnalytics */; };
+		6319F8A628C5DF3800DCBE61 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6319F8A528C5DF3800DCBE61 /* FirebaseCrashlytics */; };
+		6319F8A828C5DF3800DCBE61 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6319F8A728C5DF3800DCBE61 /* FirebaseFirestore */; };
+		6319F8AA28C5DF3800DCBE61 /* FirebasePerformance in Frameworks */ = {isa = PBXBuildFile; productRef = 6319F8A928C5DF3800DCBE61 /* FirebasePerformance */; };
+		6319F8AD28C5DF5600DCBE61 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 6319F8AC28C5DF5600DCBE61 /* Lottie */; };
+		6319F8B028C5DF7000DCBE61 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6319F8AF28C5DF7000DCBE61 /* SDWebImage */; };
+		6319F8B328C5DFBE00DCBE61 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6319F8B228C5DFBE00DCBE61 /* Alamofire */; };
+		6319F8B528C5E10100DCBE61 /* CheckInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6319F8B428C5E10100DCBE61 /* CheckInternet.swift */; };
 		632AF25028B3915F00FE50F9 /* liveanimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 632AF24F28B3915F00FE50F9 /* liveanimation.json */; };
 		632AF25228B3940400FE50F9 /* livetest.json in Resources */ = {isa = PBXBuildFile; fileRef = 632AF25128B3940400FE50F9 /* livetest.json */; };
 		632AF25428B394A600FE50F9 /* golive.json in Resources */ = {isa = PBXBuildFile; fileRef = 632AF25328B394A600FE50F9 /* golive.json */; };
@@ -92,6 +100,7 @@
 		63007B5128AE6CCD002FA25E /* goodjson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = goodjson.json; sourceTree = "<group>"; };
 		631795D128BCFAD900C93249 /* TestFirestore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFirestore.swift; sourceTree = "<group>"; };
 		6318325A28894F6C00111D7A /* GamesObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesObject.swift; sourceTree = "<group>"; };
+		6319F8B428C5E10100DCBE61 /* CheckInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
 		632AF24F28B3915F00FE50F9 /* liveanimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = liveanimation.json; sourceTree = "<group>"; };
 		632AF25128B3940400FE50F9 /* livetest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = livetest.json; sourceTree = "<group>"; };
 		632AF25328B394A600FE50F9 /* golive.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = golive.json; sourceTree = "<group>"; };
@@ -143,9 +152,16 @@
 				63BE7BFF28BF9A3F003DAD86 /* FirebaseAnalyticsSwift in Frameworks */,
 				63BE7C0128BF9A3F003DAD86 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				63BE7C0628BF9BBC003DAD86 /* FirebasePerformance in Frameworks */,
+				6319F8B328C5DFBE00DCBE61 /* Alamofire in Frameworks */,
+				6319F8A628C5DF3800DCBE61 /* FirebaseCrashlytics in Frameworks */,
 				63BE7BFB28BF9A3E003DAD86 /* FirebaseAnalytics in Frameworks */,
+				6319F8A428C5DF3800DCBE61 /* FirebaseAnalytics in Frameworks */,
+				6319F8B028C5DF7000DCBE61 /* SDWebImage in Frameworks */,
+				6319F8AD28C5DF5600DCBE61 /* Lottie in Frameworks */,
+				6319F8AA28C5DF3800DCBE61 /* FirebasePerformance in Frameworks */,
 				63F2509F28B3824100A04F52 /* Alamofire in Frameworks */,
 				63F2509828B3821200A04F52 /* FirebaseAnalytics in Frameworks */,
+				6319F8A828C5DF3800DCBE61 /* FirebaseFirestore in Frameworks */,
 				63BE7C0328BF9A3F003DAD86 /* FirebaseCrashlytics in Frameworks */,
 				63F2509528B3818800A04F52 /* SDWebImage in Frameworks */,
 				63F2509A28B3821200A04F52 /* FirebaseFirestore in Frameworks */,
@@ -261,6 +277,7 @@
 				6318325A28894F6C00111D7A /* GamesObject.swift */,
 				63680C9828589518009E99D2 /* RankingData.swift */,
 				6382FBB82869A69C00D44C82 /* MatchObject.swift */,
+				6319F8B428C5E10100DCBE61 /* CheckInternet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -383,6 +400,13 @@
 				63BE7C0028BF9A3F003DAD86 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				63BE7C0228BF9A3F003DAD86 /* FirebaseCrashlytics */,
 				63BE7C0528BF9BBC003DAD86 /* FirebasePerformance */,
+				6319F8A328C5DF3800DCBE61 /* FirebaseAnalytics */,
+				6319F8A528C5DF3800DCBE61 /* FirebaseCrashlytics */,
+				6319F8A728C5DF3800DCBE61 /* FirebaseFirestore */,
+				6319F8A928C5DF3800DCBE61 /* FirebasePerformance */,
+				6319F8AC28C5DF5600DCBE61 /* Lottie */,
+				6319F8AF28C5DF7000DCBE61 /* SDWebImage */,
+				6319F8B228C5DFBE00DCBE61 /* Alamofire */,
 			);
 			productName = P12;
 			productReference = 63C31E71284DFD650083AD8B /* P12.app */;
@@ -463,6 +487,10 @@
 				63DDDCC028BCC29A00A3ACA8 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 				63BE7BF928BF9A3E003DAD86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				63BE7C0428BF9BBC003DAD86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6319F8A228C5DF3800DCBE61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6319F8AB28C5DF5600DCBE61 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				6319F8AE28C5DF7000DCBE61 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				6319F8B128C5DFBE00DCBE61 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 63C31E72284DFD650083AD8B /* Products */;
 			projectDirPath = "";
@@ -532,6 +560,7 @@
 				63C31E75284DFD650083AD8B /* AppDelegate.swift in Sources */,
 				6365FE8B28577DFB005C363A /* GamesCollectionViewCell.swift in Sources */,
 				63C31EBB284E11860083AD8B /* FirstLaunchViewController.swift in Sources */,
+				6319F8B528C5E10100DCBE61 /* CheckInternet.swift in Sources */,
 				63C31EB0284DFDC10083AD8B /* Service.swift in Sources */,
 				63C31E77284DFD650083AD8B /* SceneDelegate.swift in Sources */,
 				63401EBD289AC86B00CE7868 /* MatchDetailViewController.swift in Sources */,
@@ -890,6 +919,38 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6319F8A228C5DF3800DCBE61 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6319F8AB28C5DF5600DCBE61 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6319F8AE28C5DF7000DCBE61 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		6319F8B128C5DFBE00DCBE61 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		63BE7BF928BF9A3E003DAD86 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -941,6 +1002,41 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6319F8A328C5DF3800DCBE61 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63F2509628B3821200A04F52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		6319F8A528C5DF3800DCBE61 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63F2509628B3821200A04F52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		6319F8A728C5DF3800DCBE61 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63F2509628B3821200A04F52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		6319F8A928C5DF3800DCBE61 /* FirebasePerformance */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63F2509628B3821200A04F52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebasePerformance;
+		};
+		6319F8AC28C5DF5600DCBE61 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63DDDCC028BCC29A00A3ACA8 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		6319F8AF28C5DF7000DCBE61 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63F2509328B3818800A04F52 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		6319F8B228C5DFBE00DCBE61 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 63F2509D28B3824100A04F52 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		63BE7BFA28BF9A3E003DAD86 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 63F2509628B3821200A04F52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

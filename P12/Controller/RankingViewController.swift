@@ -52,10 +52,10 @@ class RankingViewController: UIViewController  {
         leaguesCollectionView.showsHorizontalScrollIndicator = false
         getGamesList()
         getLeagueName()
-        getLeagues(collection: "")
-        if let url = leaguesFromDB?.first?.url {
-            getRanking(url: url)
-        }
+        getLeagues(collection: selectedGame as! String)
+
+        //getRanking(url: (leaguesFromDB?.first?.url)!)
+
         tableView.reloadData()
         if let selectedLeague = selectedLeague {
             leagueLabel.text = "\(selectedLeague)"
@@ -64,7 +64,14 @@ class RankingViewController: UIViewController  {
 
 
 
+    override func viewWillAppear(_ animated: Bool) {
+        getLeagues(collection: selectedGame as! String)
+        if let url = leaguesFromDB?.first?.url {
+            getRanking(url: url)
+            tableView.reloadData()
+        }
 
+    }
 
     //MARK: Fetch Game
     /// Get game List & game name
@@ -96,11 +103,12 @@ class RankingViewController: UIViewController  {
     //MARK: Get leagues for selected game
     func getLeagues(collection: String) {
         Service.shared.fetchLeagueDB(collection: selectedGame as! String) { data in
-
+            DispatchQueue.main.async {
             self.leaguesFromDB = data
-           // DispatchQueue.main.async {
+           //
             self.leaguesCollectionView.reloadData()
-           // }
+                self.getRanking(url: data[0].url!)
+            }
         }
 
         tableView.reloadData()
@@ -152,7 +160,6 @@ extension RankingViewController: UICollectionViewDataSource  {
 
             let leagueCell = leaguesCollectionView.dequeueReusableCell(withReuseIdentifier: leaguesCellIdentifier, for: indexPath) as! LeaguesCollectionViewCell
             leagueCell.leagueImage.sd_setImage(with: URL(string: leaguesFromDB![indexPath.row].imgurl!), placeholderImage: UIImage(named: "placeholder.png"))
-
             return leagueCell
 
         }

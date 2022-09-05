@@ -15,6 +15,9 @@ class LaunchViewController: UIViewController {
     @IBOutlet weak var animationView: AnimationView!
     
     override func viewDidLoad() {
+        if !InternetConnectionManager.isConnectedToNetwork(){
+            presentAlert(withTitle: "No connection", message: "You must be connected to the internet to use our app")
+        }
         super.viewDidLoad()
         //hide Back Button
         self.tabBarController?.navigationItem.hidesBackButton = true
